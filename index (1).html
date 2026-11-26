@@ -1,0 +1,2361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#2b1a17" />
+    <title>Anannya Paakshala — Pure Veg Cloud Kitchen</title>
+    <meta
+      name="description"
+      content="Order fresh North Indian vegetarian meals online from Anannya Paakshala."
+    />
+    <!-- Web Fonts from src/routes/__root.tsx -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Mukta:wght@400;500;600;700&family=Rozha+One&display=swap"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Rozha One"', "Georgia", "serif"],
+              caps: ['"Cinzel"', "Georgia", "serif"],
+              sans: ['"Mukta"', "system-ui", "sans-serif"],
+            },
+            colors: {
+              background: "var(--background)",
+              foreground: "var(--foreground)",
+              card: "var(--card)",
+              "card-foreground": "var(--card-foreground)",
+              popover: "var(--popover)",
+              "popover-foreground": "var(--popover-foreground)",
+              primary: "var(--primary)",
+              "primary-foreground": "var(--primary-foreground)",
+              secondary: "var(--secondary)",
+              "secondary-foreground": "var(--secondary-foreground)",
+              muted: "var(--muted)",
+              "muted-foreground": "var(--muted-foreground)",
+              accent: "var(--accent)",
+              "accent-foreground": "var(--accent-foreground)",
+              destructive: "var(--destructive)",
+              "destructive-foreground": "var(--destructive-foreground)",
+              success: "var(--success)",
+              "success-foreground": "var(--success-foreground)",
+              warning: "var(--warning)",
+              "warning-foreground": "var(--warning-foreground)",
+              ink: "var(--ink)",
+              "ink-foreground": "var(--ink-foreground)",
+              gold: "var(--gold)",
+              border: "var(--border)",
+              input: "var(--input)",
+              ring: "var(--ring)",
+              sidebar: "var(--sidebar)",
+              "sidebar-foreground": "var(--sidebar-foreground)",
+              "sidebar-accent": "var(--sidebar-accent)",
+              "sidebar-border": "var(--sidebar-border)",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Exact Design Tokens & Utilities from src/styles.css -->
+    <style>
+      :root {
+        --radius: 0.75rem;
+        --background: oklch(0.972 0.014 78);
+        --foreground: oklch(0.25 0.035 42);
+        --card: oklch(0.99 0.008 80);
+        --card-foreground: oklch(0.25 0.035 42);
+        --popover: oklch(0.99 0.008 80);
+        --popover-foreground: oklch(0.25 0.035 42);
+        --primary: oklch(0.64 0.165 50);
+        --primary-foreground: oklch(0.99 0.01 80);
+        --secondary: oklch(0.93 0.032 76);
+        --secondary-foreground: oklch(0.3 0.04 42);
+        --muted: oklch(0.945 0.018 76);
+        --muted-foreground: oklch(0.5 0.035 48);
+        --accent: oklch(0.9 0.06 80);
+        --accent-foreground: oklch(0.28 0.04 42);
+        --destructive: oklch(0.55 0.2 27);
+        --destructive-foreground: oklch(0.99 0.01 80);
+        --success: oklch(0.56 0.12 150);
+        --success-foreground: oklch(0.99 0.01 80);
+        --warning: oklch(0.8 0.14 80);
+        --warning-foreground: oklch(0.28 0.05 50);
+        --ink: oklch(0.24 0.035 40);
+        --ink-foreground: oklch(0.95 0.025 80);
+        --gold: oklch(0.72 0.1 75);
+        --border: oklch(0.87 0.035 72);
+        --input: oklch(0.85 0.035 72);
+        --ring: oklch(0.64 0.165 50);
+        --sidebar: oklch(0.24 0.035 40);
+        --sidebar-foreground: oklch(0.95 0.025 80);
+        --sidebar-primary: oklch(0.64 0.165 50);
+        --sidebar-primary-foreground: oklch(0.99 0.01 80);
+        --sidebar-accent: oklch(0.32 0.04 42);
+        --sidebar-accent-foreground: oklch(0.95 0.025 80);
+        --sidebar-border: oklch(0.36 0.04 42);
+        --sidebar-ring: oklch(0.72 0.1 75);
+
+        --gradient-hero: linear-gradient(
+          180deg,
+          oklch(0.24 0.035 40 / 0.35) 0%,
+          oklch(0.24 0.035 40 / 0.55) 45%,
+          oklch(0.24 0.035 40 / 0.96) 100%
+        );
+        --gradient-saffron: linear-gradient(135deg, oklch(0.68 0.17 55), oklch(0.6 0.17 42));
+        --shadow-warm-value: 0 1px 2px oklch(0.4 0.06 50 / 0.08),
+          0 8px 24px -12px oklch(0.4 0.08 50 / 0.25);
+        --shadow-lift-value: 0 18px 40px -18px oklch(0.35 0.09 45 / 0.45);
+      }
+
+      * {
+        border-color: var(--border);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: 0.005em;
+      }
+
+      .font-display {
+        font-family: var(--font-display);
+        font-weight: 400;
+      }
+
+      .font-caps {
+        font-family: var(--font-caps);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .bg-hero-fade {
+        background-image: var(--gradient-hero);
+      }
+
+      .bg-saffron {
+        background-image: var(--gradient-saffron);
+      }
+
+      .shadow-warm {
+        box-shadow: var(--shadow-warm-value);
+      }
+
+      .shadow-lift {
+        box-shadow: var(--shadow-lift-value);
+      }
+
+      /* Gold double rule, echoing the printed menu */
+      .rule-gold {
+        height: 5px;
+        border-top: 1px solid var(--gold);
+        border-bottom: 1px solid var(--gold);
+      }
+
+      /* Subtle paper texture: small gold dot lattice */
+      .bg-paper {
+        background-color: var(--background);
+        background-image: radial-gradient(oklch(0.72 0.1 75 / 0.13) 1px, transparent 1.2px);
+        background-size: 22px 22px;
+      }
+
+      /* Diamond ornament divider */
+      .ornament {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--gold);
+      }
+      .ornament::before,
+      .ornament::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      }
+
+      .scrollbar-none {
+        scrollbar-width: none;
+      }
+      .scrollbar-none::-webkit-scrollbar {
+        display: none;
+      }
+
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-rise {
+        animation: rise-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+
+      @keyframes ring-pulse {
+        0% {
+          box-shadow: 0 0 0 0 oklch(0.64 0.165 50 / 0.55);
+        }
+        100% {
+          box-shadow: 0 0 0 14px oklch(0.64 0.165 50 / 0);
+        }
+      }
+      .animate-ring {
+        animation: ring-pulse 1.6s ease-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div
+      id="toast-container"
+      class="fixed top-4 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center gap-2 pointer-events-none px-4 w-full max-w-md"
+    ></div>
+
+    <script>
+      // =========================================================================
+      // 1. EXACT SEED DATA FROM DRIZZLE MIGRATIONS (0000 & 0001) & SRC/ROUTES
+      // =========================================================================
+
+      const STORAGE_KEYS = {
+        SETTINGS: "ap_store_settings_v1",
+        CATEGORIES: "ap_categories_v1",
+        MENU_ITEMS: "ap_menu_items_v1",
+        CART: "ap_cart_v1",
+        ORDERS: "ap_orders_v1",
+        RECENT_ORDERS: "ap_recent_orders",
+        OWNER_ACCOUNT: "ap_owner_account_v1",
+        OWNER_SESSION: "ap_owner_session_v1",
+        ORDER_SEQ: "ap_order_seq_v1",
+      };
+
+      const DEFAULT_SETTINGS = {
+        id: 1,
+        ordering_open: true,
+        delivery_fee: 0,
+        min_order: 0,
+        upi_id: "",
+        upi_payee_name: "Anannya Paakshala",
+        closed_message:
+          "We are not taking online orders right now. Please check back soon!",
+        contact_phones: "9458826457, 9045123863, 9837275519",
+        opening_hours: "12:00 PM – 04:00 PM · 06:00 PM – 10:00 PM",
+      };
+
+      const DEFAULT_CATEGORIES = [
+        {
+          id: "cat-large-plates",
+          name: "Large Plates",
+          description: "Hearty curries, dals and sabzis",
+          sort_order: 1,
+        },
+        {
+          id: "cat-signature",
+          name: "Signature",
+          description: "Our house specials",
+          sort_order: 2,
+        },
+        {
+          id: "cat-petty-kulcha",
+          name: "Petty Kulcha",
+          description: "With Amritsari chole & imli onion chutney",
+          sort_order: 3,
+        },
+        {
+          id: "cat-classic",
+          name: "Classic",
+          description: "Salads, raita and rice",
+          sort_order: 4,
+        },
+        {
+          id: "cat-roti-paratha",
+          name: "Roti / Paratha",
+          description: "Fresh off the tawa",
+          sort_order: 5,
+        },
+        {
+          id: "cat-home-grown",
+          name: "Home Grown",
+          description: "Simple home-style meals · 12:30 PM to 04:00 PM only",
+          sort_order: 6,
+        },
+      ];
+
+      // Curated dish visual palettes & SVG artwork matching the 19 seed image keys
+      const DISH_ART = {
+        paneer: { bg: "#c85a17", accent: "#f6bd60", label: "Paneer" },
+        "paneer-tikka": { bg: "#b54418", accent: "#f4a261", label: "Tikka" },
+        palak: { bg: "#2d6a4f", accent: "#b7e4c7", label: "Palak" },
+        "dum-aloo": { bg: "#9e2a2b", accent: "#e09f3e", label: "Dum Aloo" },
+        "aloo-sabzi": { bg: "#bc6c25", accent: "#fefae0", label: "Aloo" },
+        dal: { bg: "#9c6644", accent: "#f3d5b5", label: "Dal" },
+        chana: { bg: "#7f4f24", accent: "#ede0d4", label: "Chana" },
+        "mix-veg": { bg: "#606c38", accent: "#dda15e", label: "Sabzi" },
+        baingan: { bg: "#582f0e", accent: "#d4a373", label: "Bharta" },
+        kofta: { bg: "#b07d2b", accent: "#faedcd", label: "Kofta" },
+        mushroom: { bg: "#6c584c", accent: "#dde5b6", label: "Mushroom" },
+        salad: { bg: "#386641", accent: "#a7c957", label: "Salad" },
+        raita: { bg: "#8d99ae", accent: "#edf2f4", label: "Raita" },
+        pulao: { bg: "#ca6702", accent: "#ee9b00", label: "Pulao" },
+        kulcha: { bg: "#a47148", accent: "#f3d5b5", label: "Kulcha" },
+        thali: { bg: "#8c2f39", accent: "#f2cc8f", label: "Thali" },
+        phulka: { bg: "#b68d40", accent: "#f4ebd0", label: "Phulka" },
+        paratha: { bg: "#99582a", accent: "#ffe6a7", label: "Paratha" },
+        laccha: { bg: "#8a5a44", accent: "#f7ede2", label: "Laccha" },
+      };
+
+      const DEFAULT_MENU_ITEMS = [
+        // Large Plates (27 items)
+        { id: "item-1", category_id: "cat-large-plates", name: "Kadhai Paneer", description: null, price: 190, img_key: "paneer", image_url: "", is_available: true, sort_order: 1 },
+        { id: "item-2", category_id: "cat-large-plates", name: "Paneer Butter Masala", description: null, price: 190, img_key: "paneer", image_url: "", is_available: true, sort_order: 2 },
+        { id: "item-3", category_id: "cat-large-plates", name: "Shahi Paneer", description: null, price: 210, img_key: "paneer", image_url: "", is_available: true, sort_order: 3 },
+        { id: "item-4", category_id: "cat-large-plates", name: "Paneer Tikka Lababdar", description: null, price: 210, img_key: "paneer-tikka", image_url: "", is_available: true, sort_order: 4 },
+        { id: "item-5", category_id: "cat-large-plates", name: "Paneer Khurchan", description: null, price: 210, img_key: "paneer-tikka", image_url: "", is_available: true, sort_order: 5 },
+        { id: "item-6", category_id: "cat-large-plates", name: "Paneer Rahra", description: null, price: 210, img_key: "paneer", image_url: "", is_available: true, sort_order: 6 },
+        { id: "item-7", category_id: "cat-large-plates", name: "Adraki Palak Chena", description: null, price: 210, img_key: "palak", image_url: "", is_available: true, sort_order: 7 },
+        { id: "item-8", category_id: "cat-large-plates", name: "Kasundi Paneer Roulade", description: null, price: 210, img_key: "paneer-tikka", image_url: "", is_available: true, sort_order: 8 },
+        { id: "item-9", category_id: "cat-large-plates", name: "Dum Aloo Kalimirch", description: null, price: 180, img_key: "dum-aloo", image_url: "", is_available: true, sort_order: 9 },
+        { id: "item-10", category_id: "cat-large-plates", name: "Dum Aloo Banarasi", description: null, price: 210, img_key: "dum-aloo", image_url: "", is_available: true, sort_order: 10 },
+        { id: "item-11", category_id: "cat-large-plates", name: "Hing Jeera Aloo", description: null, price: 130, img_key: "aloo-sabzi", image_url: "", is_available: true, sort_order: 11 },
+        { id: "item-12", category_id: "cat-large-plates", name: "Aloo Matar Masala", description: null, price: 140, img_key: "aloo-sabzi", image_url: "", is_available: true, sort_order: 12 },
+        { id: "item-13", category_id: "cat-large-plates", name: "Aloo Tomato Capsicum", description: null, price: 150, img_key: "aloo-sabzi", image_url: "", is_available: true, sort_order: 13 },
+        { id: "item-14", category_id: "cat-large-plates", name: "Dal Tadka", description: null, price: 140, img_key: "dal", image_url: "", is_available: true, sort_order: 14 },
+        { id: "item-15", category_id: "cat-large-plates", name: "Dal Bukhara", description: null, price: 180, img_key: "dal", image_url: "", is_available: true, sort_order: 15 },
+        { id: "item-16", category_id: "cat-large-plates", name: "Kunje Wali Dal", description: null, price: 170, img_key: "dal", image_url: "", is_available: true, sort_order: 16 },
+        { id: "item-17", category_id: "cat-large-plates", name: "Pindi Chana", description: null, price: 180, img_key: "chana", image_url: "", is_available: true, sort_order: 17 },
+        { id: "item-18", category_id: "cat-large-plates", name: "Veg Chilli Milli", description: null, price: 170, img_key: "mix-veg", image_url: "", is_available: true, sort_order: 18 },
+        { id: "item-19", category_id: "cat-large-plates", name: "Navratna Mix Veg", description: null, price: 190, img_key: "mix-veg", image_url: "", is_available: true, sort_order: 19 },
+        { id: "item-20", category_id: "cat-large-plates", name: "Gobhi Harimirch Ki Khurchan", description: null, price: 190, img_key: "mix-veg", image_url: "", is_available: true, sort_order: 20 },
+        { id: "item-21", category_id: "cat-large-plates", name: "Baigan Bharta", description: null, price: 170, img_key: "baingan", image_url: "", is_available: true, sort_order: 21 },
+        { id: "item-22", category_id: "cat-large-plates", name: "Achari Bhindi Masala", description: null, price: 180, img_key: "mix-veg", image_url: "", is_available: true, sort_order: 22 },
+        { id: "item-23", category_id: "cat-large-plates", name: "Kesar Malai Kofta", description: null, price: 210, img_key: "kofta", image_url: "", is_available: true, sort_order: 23 },
+        { id: "item-24", category_id: "cat-large-plates", name: "Cheese Kofta", description: null, price: 210, img_key: "kofta", image_url: "", is_available: true, sort_order: 24 },
+        { id: "item-25", category_id: "cat-large-plates", name: "Mushroom Volcano", description: null, price: 210, img_key: "mushroom", image_url: "", is_available: true, sort_order: 25 },
+        { id: "item-26", category_id: "cat-large-plates", name: "Methi Malai Matar", description: null, price: 210, img_key: "palak", image_url: "", is_available: true, sort_order: 26 },
+        { id: "item-27", category_id: "cat-large-plates", name: "Creamy Kaju Matar Masala", description: null, price: 210, img_key: "mix-veg", image_url: "", is_available: true, sort_order: 27 },
+
+        // Signature (2 items)
+        {
+          id: "item-28",
+          category_id: "cat-signature",
+          name: "Anannya Tasting Plate",
+          description:
+            "Paneer Butter Masala + Mix Veg + Dal Makhani + Raita + Peas Pulao + Salad + Dessert + 4 Ghee Phulka / 2 Plain Ghee Paratha",
+          price: 220,
+          img_key: "thali",
+          image_url: "",
+          is_available: true,
+          sort_order: 1,
+        },
+        {
+          id: "item-29",
+          category_id: "cat-signature",
+          name: "Veg Paneer Dum Pulao",
+          description: "Fragrant dum-cooked pulao with vegetables and paneer",
+          price: 220,
+          img_key: "pulao",
+          image_url: "",
+          is_available: true,
+          sort_order: 2,
+        },
+
+        // Petty Kulcha (3 items)
+        {
+          id: "item-30",
+          category_id: "cat-petty-kulcha",
+          name: "Veg Kulcha",
+          description: "With Amritsari chole & imli onion chutney",
+          price: 120,
+          img_key: "kulcha",
+          image_url: "",
+          is_available: true,
+          sort_order: 1,
+        },
+        {
+          id: "item-31",
+          category_id: "cat-petty-kulcha",
+          name: "Onion Paneer Masala Kulcha",
+          description: "With Amritsari chole & imli onion chutney",
+          price: 140,
+          img_key: "kulcha",
+          image_url: "",
+          is_available: true,
+          sort_order: 2,
+        },
+        {
+          id: "item-32",
+          category_id: "cat-petty-kulcha",
+          name: "Jalapeno Chilli Cheese Kulcha",
+          description: "With Amritsari chole & imli onion chutney",
+          price: 160,
+          img_key: "kulcha",
+          image_url: "",
+          is_available: true,
+          sort_order: 3,
+        },
+
+        // Classic (6 items)
+        {
+          id: "item-33",
+          category_id: "cat-classic",
+          name: "Fresh Green Salad",
+          description: null,
+          price: 80,
+          img_key: "salad",
+          image_url: "",
+          is_available: true,
+          sort_order: 1,
+        },
+        {
+          id: "item-34",
+          category_id: "cat-classic",
+          name: "Raita Mix Veg / Aloo Pyaz / Boondi",
+          description: "Mention your choice in the order note",
+          price: 80,
+          img_key: "raita",
+          image_url: "",
+          is_available: true,
+          sort_order: 2,
+        },
+        {
+          id: "item-35",
+          category_id: "cat-classic",
+          name: "Raita Pineapple",
+          description: null,
+          price: 90,
+          img_key: "raita",
+          image_url: "",
+          is_available: true,
+          sort_order: 3,
+        },
+        {
+          id: "item-36",
+          category_id: "cat-classic",
+          name: "Peas Pulao",
+          description: null,
+          price: 120,
+          img_key: "pulao",
+          image_url: "",
+          is_available: true,
+          sort_order: 4,
+        },
+        {
+          id: "item-37",
+          category_id: "cat-classic",
+          name: "Veg. Pulao",
+          description: null,
+          price: 140,
+          img_key: "pulao",
+          image_url: "",
+          is_available: true,
+          sort_order: 5,
+        },
+        {
+          id: "item-38",
+          category_id: "cat-classic",
+          name: "Kaju Jeera Ghee Rice",
+          description: null,
+          price: 180,
+          img_key: "pulao",
+          image_url: "",
+          is_available: true,
+          sort_order: 6,
+        },
+
+        // Roti / Paratha (12 items)
+        { id: "item-39", category_id: "cat-roti-paratha", name: "Phulka Ghee Wala", description: null, price: 10, img_key: "phulka", image_url: "", is_available: true, sort_order: 1 },
+        { id: "item-40", category_id: "cat-roti-paratha", name: "Phulka Missa Ghee Wala", description: null, price: 20, img_key: "phulka", image_url: "", is_available: true, sort_order: 2 },
+        { id: "item-41", category_id: "cat-roti-paratha", name: "Plain Ghee Paratha", description: null, price: 20, img_key: "paratha", image_url: "", is_available: true, sort_order: 3 },
+        { id: "item-42", category_id: "cat-roti-paratha", name: "Aloo Paratha", description: null, price: 50, img_key: "paratha", image_url: "", is_available: true, sort_order: 4 },
+        { id: "item-43", category_id: "cat-roti-paratha", name: "Aloo Pyaz Paratha", description: null, price: 60, img_key: "paratha", image_url: "", is_available: true, sort_order: 5 },
+        { id: "item-44", category_id: "cat-roti-paratha", name: "Masala Paratha", description: null, price: 50, img_key: "paratha", image_url: "", is_available: true, sort_order: 6 },
+        { id: "item-45", category_id: "cat-roti-paratha", name: "Resmi Laccha Paratha", description: null, price: 60, img_key: "laccha", image_url: "", is_available: true, sort_order: 7 },
+        { id: "item-46", category_id: "cat-roti-paratha", name: "Malabar Laccha Paratha", description: null, price: 70, img_key: "laccha", image_url: "", is_available: true, sort_order: 8 },
+        { id: "item-47", category_id: "cat-roti-paratha", name: "Missa Masala Laccha Paratha", description: null, price: 70, img_key: "laccha", image_url: "", is_available: true, sort_order: 9 },
+        { id: "item-48", category_id: "cat-roti-paratha", name: "Jalapeno Chilli Cheese Paratha", description: null, price: 90, img_key: "paratha", image_url: "", is_available: true, sort_order: 10 },
+        { id: "item-49", category_id: "cat-roti-paratha", name: "Za'atar Paneer Masala Paratha", description: null, price: 100, img_key: "paratha", image_url: "", is_available: true, sort_order: 11 },
+        { id: "item-50", category_id: "cat-roti-paratha", name: "Meva Malai Paratha", description: null, price: 120, img_key: "paratha", image_url: "", is_available: true, sort_order: 12 },
+
+        // Home Grown (3 items)
+        {
+          id: "item-51",
+          category_id: "cat-home-grown",
+          name: "4 Phulka Ghee Wala with Dal and Seasonal Veg",
+          description: "Available 12:30 PM to 04:00 PM",
+          price: 90,
+          img_key: "thali",
+          image_url: "",
+          is_available: true,
+          sort_order: 1,
+        },
+        {
+          id: "item-52",
+          category_id: "cat-home-grown",
+          name: "Aloo Paratha with Matar Paneer Gravy & Raita",
+          description: "Available 12:30 PM to 04:00 PM",
+          price: 100,
+          img_key: "paratha",
+          image_url: "",
+          is_available: true,
+          sort_order: 2,
+        },
+        {
+          id: "item-53",
+          category_id: "cat-home-grown",
+          name: "Basmati Chawal with Dilli Wale Chole",
+          description: "Available 12:30 PM to 04:00 PM",
+          price: 80,
+          img_key: "chana",
+          image_url: "",
+          is_available: true,
+          sort_order: 3,
+        },
+      ];
+
+      const PREBOOK = [
+        { name: "Dal Bati Churma", note: "Authentic Rajasthani taste" },
+        { name: "Kesar Malai Kheer", note: "Rich, creamy saffron delight" },
+        { name: "Special Laddoos", note: "Churma · Besan · Panjiri · Chana Dal" },
+        {
+          name: "Aloo Sabji, Boondi Raita & Seasonal Veg with Poori",
+          note: "The perfect combination",
+        },
+      ];
+
+      const STATUS_LABEL = {
+        pending: "Waiting for confirmation",
+        accepted: "Order confirmed",
+        preparing: "Being prepared",
+        out_for_delivery: "Out for delivery",
+        delivered: "Delivered",
+        rejected: "Rejected",
+        cancelled: "Cancelled",
+      };
+
+      const SHORT_STATUS = {
+        pending: "New",
+        accepted: "Accepted",
+        preparing: "Preparing",
+        out_for_delivery: "On the way",
+        delivered: "Delivered",
+        rejected: "Rejected",
+        cancelled: "Cancelled",
+      };
+
+      const PROGRESS_STEPS = [
+        "pending",
+        "accepted",
+        "preparing",
+        "out_for_delivery",
+        "delivered",
+      ];
+
+      const ACTIVE_STATUSES = [
+        "pending",
+        "accepted",
+        "preparing",
+        "out_for_delivery",
+      ];
+
+      const NEXT_STATUS = {
+        accepted: { to: "preparing", label: "Start preparing" },
+        preparing: { to: "out_for_delivery", label: "Out for delivery" },
+        out_for_delivery: { to: "delivered", label: "Mark delivered" },
+      };
+
+      const PAYMENT_LABEL = {
+        cod: "Cash on delivery",
+        upi: "UPI (online)",
+      };
+
+      // =========================================================================
+      // 2. STATE & PERSISTENCE LAYER
+      // =========================================================================
+
+      function loadJSON(key, fallback) {
+        try {
+          const raw = localStorage.getItem(key);
+          return raw ? JSON.parse(raw) : fallback;
+        } catch {
+          return fallback;
+        }
+      }
+
+      function saveJSON(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch {
+          /* ignore */
+        }
+      }
+
+      const state = {
+        route: "/", // "/", "/cart", "/order/:id", "/admin", "/admin/menu", "/admin/settings"
+        settings: loadJSON(STORAGE_KEYS.SETTINGS, { ...DEFAULT_SETTINGS }),
+        categories: loadJSON(STORAGE_KEYS.CATEGORIES, [...DEFAULT_CATEGORIES]),
+        items: loadJSON(STORAGE_KEYS.MENU_ITEMS, [...DEFAULT_MENU_ITEMS]),
+        cart: loadJSON(STORAGE_KEYS.CART, {}),
+        orders: loadJSON(STORAGE_KEYS.ORDERS, []),
+        recentOrders: loadJSON(STORAGE_KEYS.RECENT_ORDERS, []),
+        ownerAccount: loadJSON(STORAGE_KEYS.OWNER_ACCOUNT, null),
+        ownerSignedIn: loadJSON(STORAGE_KEYS.OWNER_SESSION, false),
+
+        // Checkout form state
+        checkoutForm: {
+          name: "",
+          phone: "",
+          address: "",
+          landmark: "",
+          notes: "",
+        },
+        checkoutPayment: "cod",
+        checkoutErrors: {},
+
+        // Admin UI state
+        adminOrderFilter: "active", // "active" | "done"
+        adminMenuQuery: "",
+        adminMenuDraft: null, // null | { id?, name, description, price, image_url, category_id }
+        rejectModalOrderId: null,
+        rejectModalReason: "Sorry, we can't take this order right now.",
+        cancelConfirmOrderId: null,
+        deleteConfirmItem: null,
+      };
+
+      // =========================================================================
+      // 3. ORDER MATH & VALIDATION HELPERS (from src/lib/order-math.ts)
+      // =========================================================================
+
+      function formatINR(amount) {
+        return `₹${Number(amount).toLocaleString("en-IN")}`;
+      }
+
+      function normalizeIndianPhone(input) {
+        let digits = String(input || "").replace(/\D/g, "");
+        if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);
+        if (digits.length === 11 && digits.startsWith("0")) digits = digits.slice(1);
+        return /^[6-9]\d{9}$/.test(digits) ? digits : null;
+      }
+
+      function buildUpiLink({ upiId, payeeName, amount, orderNumber }) {
+        const params = new URLSearchParams({
+          pa: upiId.trim(),
+          pn: payeeName,
+          am: Number(amount).toFixed(2),
+          cu: "INR",
+          tn: `Order #${orderNumber}`,
+        });
+        return `upi://pay?${params.toString()}`;
+      }
+
+      function getCartSummary() {
+        const priced = Object.entries(state.cart)
+          .map(([id, quantity]) => {
+            const item = state.items.find((i) => i.id === id);
+            return item ? { item, price: item.price, quantity } : null;
+          })
+          .filter(Boolean);
+
+        const subtotal = priced.reduce((sum, l) => sum + l.price * l.quantity, 0);
+        const itemCount = priced.reduce((sum, l) => sum + l.quantity, 0);
+        const deliveryFee = itemCount > 0 ? Number(state.settings.delivery_fee || 0) : 0;
+        const minOrder = Number(state.settings.min_order || 0);
+        const shortBy = Math.max(0, minOrder - subtotal);
+
+        return {
+          priced,
+          totals: {
+            itemCount,
+            subtotal,
+            deliveryFee,
+            total: subtotal + deliveryFee,
+            meetsMinimum: shortBy === 0,
+            shortBy,
+          },
+        };
+      }
+
+      function escapeHtml(str) {
+        if (str === null || str === undefined) return "";
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      // =========================================================================
+      // 4. TOAST NOTIFICATION SYSTEM (Non-blocking UI)
+      // =========================================================================
+
+      function showToast(message, type = "default") {
+        const container = document.getElementById("toast-container");
+        if (!container) return;
+        const el = document.createElement("div");
+        const styles =
+          type === "error"
+            ? "bg-destructive text-destructive-foreground border-destructive"
+            : type === "success"
+            ? "bg-ink text-ink-foreground border-gold/60"
+            : "bg-card text-foreground border-border";
+        el.className = `pointer-events-auto flex items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium shadow-lift animate-rise ${styles}`;
+        el.innerHTML = `<span>${escapeHtml(message)}</span>`;
+        container.appendChild(el);
+        setTimeout(() => {
+          el.style.opacity = "0";
+          el.style.transition = "opacity 0.25s ease";
+          setTimeout(() => el.remove(), 260);
+        }, 3200);
+      }
+
+      function copyToClipboard(text, successMsg) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          showToast(successMsg, "success");
+        } catch {
+          showToast("Could not copy", "error");
+        }
+        document.body.removeChild(textarea);
+      }
+
+      // =========================================================================
+      // 5. CUSTOM INLINE SVG CREST & DISH ARTWORK (NO BROKEN EXTERNAL URLS)
+      // =========================================================================
+
+      function renderBrandLogo(heightClass = "h-11") {
+        return `
+          <div class="inline-flex items-center select-none">
+            <svg viewBox="0 0 420 156" class="${heightClass} w-auto shrink-0 rounded-[2px]" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anannya Paakshala">
+              <!-- Dark tamarind-brown rectangular background -->
+              <rect width="420" height="156" fill="#2b1917" />
+              <!-- Gold inner border frame with bottom opening for 'paakshala' -->
+              <path d="M 122 140 L 18 140 L 18 16 L 402 16 L 402 140 L 298 140" stroke="#bfa063" stroke-width="5" stroke-linecap="square" />
+              <!-- Stylized orange calligraphic 'Anannya' lettering -->
+              <g stroke="#d97228" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <!-- Calligraphic 'A' with left curl and crossbar -->
+                <path d="M 52 104 C 42 104 38 95 43 88 C 48 82 56 87 54 94 C 52 101 44 108 55 108 C 67 108 82 65 92 26 L 96 108" stroke-width="5.2" />
+                <path d="M 65 73 L 96 76" stroke-width="4.5" />
+                <!-- First 'n' with decorative tick strokes -->
+                <path d="M 116 105 L 116 74 C 116 64 134 64 134 75 L 134 105" stroke-width="4.8" />
+                <path d="M 134 62 L 137 56 M 141 67 L 147 64 M 142 74 L 148 75" stroke-width="2.4" />
+                <!-- First 'a' -->
+                <path d="M 184 74 C 176 63 158 67 157 86 C 156 104 173 108 184 94 L 184 68 L 186 105" stroke-width="5" />
+                <!-- Capital 'N' -->
+                <path d="M 210 105 L 210 64 L 243 108 L 243 60" stroke-width="5" />
+                <!-- Second 'n' with decorative tick strokes -->
+                <path d="M 264 105 L 264 74 C 264 64 282 64 282 75 L 282 105" stroke-width="4.8" />
+                <path d="M 282 62 L 285 56 M 289 67 L 295 64 M 290 74 L 296 75" stroke-width="2.4" />
+                <!-- Tall calligraphic 'y' with descender loop -->
+                <path d="M 308 66 C 308 88 313 96 322 96 C 332 96 338 80 340 24 L 336 124 C 335 140 318 140 315 129 C 313 122 319 118 325 121" stroke-width="5.2" />
+                <!-- Final 'a' with inner spiral -->
+                <path d="M 384 74 C 374 63 356 68 356 87 C 356 104 374 107 384 94 L 384 68 C 384 92 387 105 395 105" stroke-width="5" />
+                <path d="M 366 85 C 366 80 372 80 372 85 C 372 89 368 90 366 88" stroke-width="2.6" />
+              </g>
+              <!-- White 'paakshala' text centered in the bottom border break -->
+              <text x="210" y="143" text-anchor="middle" fill="#f3eee8" font-family="'Mukta', system-ui, sans-serif" font-size="16" font-weight="400" letter-spacing="4.2">paakshala</text>
+            </svg>
+          </div>
+        `;
+      }
+
+      function renderHeroBackdrop() {
+        return `
+          <div class="absolute inset-0 -z-10 overflow-hidden bg-[#24130f]">
+            <svg class="h-full w-full object-cover opacity-55" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <radialGradient id="hg1" cx="75%" cy="35%" r="55%">
+                  <stop offset="0%" stop-color="#d96b27" stop-opacity="0.75"/>
+                  <stop offset="55%" stop-color="#6e2c14" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#1f110e" stop-opacity="0.95"/>
+                </radialGradient>
+                <radialGradient id="hg2" cx="25%" cy="70%" r="50%">
+                  <stop offset="0%" stop-color="#b89552" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#1f110e" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="1200" height="600" fill="url(#hg1)"/>
+              <rect width="1200" height="600" fill="url(#hg2)"/>
+              <!-- Decorative brass thali & bowls silhouette -->
+              <g transform="translate(880, 270)" opacity="0.42">
+                <circle cx="0" cy="0" r="195" fill="none" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="0" cy="0" r="182" fill="none" stroke="#d4af37" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <circle cx="-65" cy="-55" r="46" fill="#8c3b19" stroke="#e9c46a" stroke-width="1.5"/>
+                <circle cx="55" cy="-60" r="42" fill="#3a5a40" stroke="#e9c46a" stroke-width="1.5"/>
+                <circle cx="80" cy="35" r="44" fill="#b5651d" stroke="#e9c46a" stroke-width="1.5"/>
+                <circle cx="-15" cy="70" r="56" fill="#d4a373" stroke="#e9c46a" stroke-width="1.5"/>
+                <ellipse cx="-78" cy="25" rx="34" ry="22" fill="#f4e3c1" stroke="#e9c46a" stroke-width="1"/>
+              </g>
+            </svg>
+          </div>
+        `;
+      }
+
+      function renderDishThumb(item, soldOut, sizeClasses = "h-24 w-24 sm:h-28 sm:w-28") {
+        const art = DISH_ART[item.img_key] || DISH_ART.paneer;
+        const customUrl = (item.image_url || "").trim();
+
+        const fallbackSvg = `
+          <div class="grid h-full w-full place-items-center relative overflow-hidden ${soldOut ? "grayscale" : ""}"
+               style="background: radial-gradient(circle at 30% 25%, ${art.accent}55, ${art.bg});">
+            <svg viewBox="0 0 80 80" class="h-14 w-14 opacity-90 transition-transform duration-500 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="32" stroke="${art.accent}" stroke-width="1.2" stroke-opacity="0.5"/>
+              <path d="M20 44C20 53 29 59 40 59C51 59 60 53 60 44H20Z" fill="${art.accent}" fill-opacity="0.28" stroke="${art.accent}" stroke-width="1.6"/>
+              <ellipse cx="40" cy="44" rx="20" ry="4.5" fill="${art.accent}" fill-opacity="0.45" stroke="${art.accent}" stroke-width="1.4"/>
+              <path d="M32 33C32 30 34.5 29 34.5 26M40 31C40 28 42.5 27 42.5 24M48 33C48 30 50.5 29 50.5 26" stroke="${art.accent}" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="absolute bottom-1.5 right-2 font-caps text-[8px] tracking-widest opacity-80" style="color: ${art.accent}">${escapeHtml(art.label)}</span>
+          </div>
+        `;
+
+        if (customUrl) {
+          return `
+            <div class="relative ${sizeClasses} shrink-0 overflow-hidden rounded-xl bg-muted">
+              <img
+                src="${escapeHtml(customUrl)}"
+                alt="${escapeHtml(item.name)}"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${soldOut ? "grayscale" : ""}"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+              />
+              <div style="display:none;" class="h-full w-full">${fallbackSvg}</div>
+              ${soldOut ? `<span class="absolute inset-x-0 bottom-0 bg-ink/85 py-0.5 text-center text-[11px] font-semibold tracking-wide text-ink-foreground">SOLD OUT</span>` : ""}
+            </div>
+          `;
+        }
+
+        return `
+          <div class="relative ${sizeClasses} shrink-0 overflow-hidden rounded-xl bg-muted">
+            ${fallbackSvg}
+            ${soldOut ? `<span class="absolute inset-x-0 bottom-0 bg-ink/85 py-0.5 text-center text-[11px] font-semibold tracking-wide text-ink-foreground">SOLD OUT</span>` : ""}
+          </div>
+        `;
+      }
+
+      // =========================================================================
+      // 6. ACTIONS (CART, ORDERS, ADMIN)
+      // =========================================================================
+
+      function navigate(to) {
+        state.route = to;
+        window.scrollTo(0, 0);
+        render();
+      }
+
+      function setCartQty(id, qty) {
+        if (qty <= 0) {
+          delete state.cart[id];
+        } else {
+          state.cart[id] = Math.min(50, qty);
+        }
+        saveJSON(STORAGE_KEYS.CART, state.cart);
+        render();
+      }
+
+      function addToCart(id) {
+        setCartQty(id, (state.cart[id] || 0) + 1);
+      }
+
+      function removeFromCart(id) {
+        setCartQty(id, (state.cart[id] || 0) - 1);
+      }
+
+      function clearCart() {
+        state.cart = {};
+        saveJSON(STORAGE_KEYS.CART, state.cart);
+      }
+
+      function rememberOrder(id) {
+        state.recentOrders = [id, ...state.recentOrders.filter((x) => x !== id)].slice(0, 5);
+        saveJSON(STORAGE_KEYS.RECENT_ORDERS, state.recentOrders);
+      }
+
+      function placeOrder(e) {
+        e.preventDefault();
+        const { priced, totals } = getCartSummary();
+        const f = state.checkoutForm;
+        const errs = {};
+
+        if (f.name.trim().length < 2) errs.name = "Please enter your name";
+        const normalizedPhone = normalizeIndianPhone(f.phone);
+        if (!normalizedPhone) errs.phone = "Enter a valid 10-digit mobile number";
+        if (f.address.trim().length < 8) errs.address = "Please enter your full address";
+
+        state.checkoutErrors = errs;
+        if (Object.keys(errs).length > 0) {
+          render();
+          return;
+        }
+
+        if (!state.settings.ordering_open) {
+          showToast("Sorry, we are not taking online orders right now.", "error");
+          return;
+        }
+
+        if (!totals.meetsMinimum || priced.length === 0) {
+          showToast(`Minimum order is ${formatINR(state.settings.min_order)}.`, "error");
+          return;
+        }
+
+        const unavailable = priced.find((p) => !p.item.is_available);
+        if (unavailable) {
+          showToast(`${unavailable.item.name} is sold out right now. Please remove it from your cart.`, "error");
+          return;
+        }
+
+        const seq = Number(loadJSON(STORAGE_KEYS.ORDER_SEQ, 1001));
+        saveJSON(STORAGE_KEYS.ORDER_SEQ, seq + 1);
+
+        const orderId =
+          typeof crypto !== "undefined" && crypto.randomUUID
+            ? crypto.randomUUID()
+            : "ord-" + Date.now() + "-" + Math.floor(Math.random() * 10000);
+
+        const upiAvailable = Boolean((state.settings.upi_id || "").trim());
+        const paymentMethod = state.checkoutPayment === "upi" && upiAvailable ? "upi" : "cod";
+
+        const newOrder = {
+          id: orderId,
+          order_number: seq,
+          customer_name: f.name.trim(),
+          phone: normalizedPhone,
+          address: f.address.trim(),
+          landmark: f.landmark.trim() || null,
+          notes: f.notes.trim() || null,
+          payment_method: paymentMethod,
+          payment_status: "unpaid",
+          upi_reference: null,
+          subtotal: totals.subtotal,
+          delivery_fee: totals.deliveryFee,
+          total: totals.total,
+          status: "pending",
+          reject_reason: null,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          order_items: priced.map((p) => ({
+            name: p.item.name,
+            unit_price: p.item.price,
+            quantity: p.quantity,
+          })),
+        };
+
+        state.orders = [newOrder, ...state.orders];
+        saveJSON(STORAGE_KEYS.ORDERS, state.orders);
+        rememberOrder(orderId);
+        clearCart();
+        state.checkoutForm = { name: "", phone: "", address: "", landmark: "", notes: "" };
+        state.checkoutErrors = {};
+        showToast(`Order #${seq} placed!`, "success");
+        navigate(`/order/${orderId}`);
+      }
+
+      function submitUpiReference(orderId) {
+        const input = document.getElementById("upi-ref-input");
+        const ref = (input ? input.value : "").trim();
+        if (ref.length < 4 || ref.length > 40) {
+          showToast("Please enter the 12-digit UPI reference (UTR) number.", "error");
+          return;
+        }
+        state.orders = state.orders.map((o) =>
+          o.id === orderId && o.payment_method === "upi" && o.payment_status === "unpaid"
+            ? { ...o, upi_reference: ref, updated_at: new Date().toISOString() }
+            : o
+        );
+        saveJSON(STORAGE_KEYS.ORDERS, state.orders);
+        showToast("Thanks! The kitchen will confirm your payment.", "success");
+        render();
+      }
+
+      // Owner Auth Actions
+      function handleOwnerAuth(e) {
+        e.preventDefault();
+        const email = document.getElementById("owner-email").value.trim();
+        const pw = document.getElementById("owner-pw").value;
+        if (!email || pw.length < 8) {
+          showToast("Enter a valid email and at least 8-character password.", "error");
+          return;
+        }
+        if (!state.ownerAccount) {
+          state.ownerAccount = { email, password: pw };
+          state.ownerSignedIn = true;
+          saveJSON(STORAGE_KEYS.OWNER_ACCOUNT, state.ownerAccount);
+          saveJSON(STORAGE_KEYS.OWNER_SESSION, true);
+          showToast("Owner account created & signed in.", "success");
+          render();
+        } else {
+          if (
+            email.toLowerCase() === state.ownerAccount.email.toLowerCase() &&
+            pw === state.ownerAccount.password
+          ) {
+            state.ownerSignedIn = true;
+            saveJSON(STORAGE_KEYS.OWNER_SESSION, true);
+            showToast("Signed in to Owner Dashboard", "success");
+            render();
+          } else {
+            showToast("Wrong email or password.", "error");
+          }
+        }
+      }
+
+      function ownerSignOut() {
+        state.ownerSignedIn = false;
+        saveJSON(STORAGE_KEYS.OWNER_SESSION, false);
+        render();
+      }
+
+      // Admin Order Actions
+      function updateOrder(id, patch) {
+        state.orders = state.orders.map((o) =>
+          o.id === id ? { ...o, ...patch, updated_at: new Date().toISOString() } : o
+        );
+        saveJSON(STORAGE_KEYS.ORDERS, state.orders);
+        render();
+      }
+
+      function toggleOrderingOpen(val) {
+        state.settings.ordering_open = Boolean(val);
+        saveJSON(STORAGE_KEYS.SETTINGS, state.settings);
+        showToast(
+          state.settings.ordering_open ? "Online ordering is OPEN" : "Online ordering is CLOSED",
+          "success"
+        );
+        render();
+      }
+
+      // Admin Menu Actions
+      function patchMenuItem(id, patch) {
+        state.items = state.items.map((it) => (it.id === id ? { ...it, ...patch } : it));
+        saveJSON(STORAGE_KEYS.MENU_ITEMS, state.items);
+        render();
+      }
+
+      function saveMenuDraft() {
+        const d = state.adminMenuDraft;
+        if (!d) return;
+        const name = document.getElementById("draft-name").value.trim();
+        const price = Number(document.getElementById("draft-price").value);
+        const category_id = document.getElementById("draft-cat").value || null;
+        const description = document.getElementById("draft-desc").value.trim() || null;
+        const image_url = document.getElementById("draft-img").value.trim();
+
+        if (!name || !Number.isInteger(price) || price < 0) {
+          showToast("Enter a name and a whole-rupee price", "error");
+          return;
+        }
+
+        if (d.id) {
+          state.items = state.items.map((it) =>
+            it.id === d.id
+              ? { ...it, name, price, category_id, description, image_url }
+              : it
+          );
+        } else {
+          const newItem = {
+            id: "item-" + Date.now(),
+            category_id,
+            name,
+            description,
+            price,
+            img_key: "paneer",
+            image_url,
+            is_available: true,
+            sort_order: state.items.length + 1,
+          };
+          state.items = [...state.items, newItem];
+        }
+        saveJSON(STORAGE_KEYS.MENU_ITEMS, state.items);
+        state.adminMenuDraft = null;
+        showToast("Saved", "success");
+        render();
+      }
+
+      function deleteMenuItem(id) {
+        state.items = state.items.filter((it) => it.id !== id);
+        saveJSON(STORAGE_KEYS.MENU_ITEMS, state.items);
+        state.deleteConfirmItem = null;
+        showToast("Dish deleted", "success");
+        render();
+      }
+
+      // Admin Settings Actions
+      function saveStoreSettings(e) {
+        e.preventDefault();
+        const ordering_open = document.getElementById("set-open").checked;
+        const delivery_fee = Number(document.getElementById("set-fee").value);
+        const min_order = Number(document.getElementById("set-min").value);
+        const upi_id = document.getElementById("set-upi").value.trim();
+        const upi_payee_name = document.getElementById("set-payee").value.trim() || "Anannya Paakshala";
+        const contact_phones = document.getElementById("set-phones").value.trim();
+        const opening_hours = document.getElementById("set-hours").value.trim();
+        const closed_message = document.getElementById("set-closed-msg").value.trim();
+
+        if (
+          !Number.isInteger(delivery_fee) ||
+          delivery_fee < 0 ||
+          !Number.isInteger(min_order) ||
+          min_order < 0
+        ) {
+          showToast("Fees must be whole rupees, 0 or more", "error");
+          return;
+        }
+
+        state.settings = {
+          ...state.settings,
+          ordering_open,
+          delivery_fee,
+          min_order,
+          upi_id,
+          upi_payee_name,
+          contact_phones,
+          opening_hours,
+          closed_message,
+        };
+        saveJSON(STORAGE_KEYS.SETTINGS, state.settings);
+        showToast("Settings saved", "success");
+        render();
+      }
+
+      // =========================================================================
+      // 7. SHARED CUSTOMER SHELL & COMPONENTS
+      // =========================================================================
+
+      function phonesOf(s) {
+        return (s || "")
+          .split(/[,|/]/)
+          .map((p) => p.trim())
+          .filter(Boolean);
+      }
+
+      function renderQtyStepper(itemId, qty, size = "md") {
+        const btn = size === "sm" ? "h-8 w-8" : "h-9 w-9";
+        return `
+          <div class="inline-flex items-center rounded-full border border-primary/40 bg-card shadow-warm">
+            <button type="button" aria-label="Remove one" onclick="removeFromCart('${itemId}')" class="${btn} grid place-items-center rounded-full text-primary hover:bg-primary/10 transition-colors">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg>
+            </button>
+            <span class="min-w-6 text-center font-semibold tabular-nums" aria-live="polite">${qty}</span>
+            <button type="button" aria-label="Add one" onclick="addToCart('${itemId}')" class="${btn} grid place-items-center rounded-full text-primary hover:bg-primary/10 transition-colors">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        `;
+      }
+
+      function renderCustomerShell(innerHtml, { hideCartBar = false } = {}) {
+        const { totals } = getCartSummary();
+        const recent = state.recentOrders[0] || null;
+        const phones = phonesOf(state.settings.contact_phones);
+
+        return `
+          <div class="min-h-screen bg-paper flex flex-col">
+            <header class="sticky top-0 z-40 bg-ink text-ink-foreground shadow-lift">
+              <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
+                <a href="#/" onclick="event.preventDefault(); navigate('/')" aria-label="Anannya Paakshala home" class="flex items-center">
+                  ${renderBrandLogo("h-10 sm:h-11")}
+                </a>
+                <nav class="flex items-center gap-2">
+                  ${
+                    recent
+                      ? `<a href="#/order/${recent}" onclick="event.preventDefault(); navigate('/order/${recent}')" class="hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm text-ink-foreground/85 hover:text-ink-foreground sm:inline-flex">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg>
+                          Track order
+                        </a>`
+                      : ""
+                  }
+                  <a href="#/cart" onclick="event.preventDefault(); navigate('/cart')" class="relative inline-flex items-center gap-2 rounded-full border border-gold/60 px-4 py-2 text-sm font-medium hover:bg-gold/15 transition-colors">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Cart
+                    ${
+                      totals.itemCount > 0
+                        ? `<span class="grid h-5 min-w-5 place-items-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground">${totals.itemCount}</span>`
+                        : ""
+                    }
+                  </a>
+                </nav>
+              </div>
+              <div class="rule-gold opacity-60"></div>
+            </header>
+
+            ${
+              recent
+                ? `<div class="border-b border-border bg-accent/60 sm:hidden">
+                    <a href="#/order/${recent}" onclick="event.preventDefault(); navigate('/order/${recent}')" class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2 text-sm font-medium text-accent-foreground">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg>
+                      Track your latest order →
+                    </a>
+                  </div>`
+                : ""
+            }
+
+            <main class="flex-1 pb-28">${innerHtml}</main>
+
+            <footer class="bg-ink text-ink-foreground">
+              <div class="rule-gold opacity-60"></div>
+              <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3">
+                <div>
+                  ${renderBrandLogo("h-12")}
+                  <p class="mt-3 font-caps text-xs text-gold">Fresh · Fast · Flavourful</p>
+                </div>
+                <div class="space-y-2 text-sm">
+                  <p class="font-caps text-xs text-gold">Kitchen hours</p>
+                  <p class="flex items-start gap-2 text-ink-foreground/85">
+                    <svg class="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>${escapeHtml(state.settings.opening_hours)}</span>
+                  </p>
+                </div>
+                <div class="space-y-2 text-sm">
+                  <p class="font-caps text-xs text-gold">Call us</p>
+                  ${phones
+                    .map(
+                      (p) => `
+                    <a href="tel:${escapeHtml(p)}" class="flex items-center gap-2 text-ink-foreground/85 hover:text-ink-foreground">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                      ${escapeHtml(p)}
+                    </a>`
+                    )
+                    .join("")}
+                </div>
+              </div>
+              <div class="border-t border-sidebar-border">
+                <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-xs text-ink-foreground/60">
+                  <span>© ${new Date().getFullYear()} Anannya Paakshala</span>
+                  <a href="#/admin" onclick="event.preventDefault(); navigate('/admin')" class="hover:text-ink-foreground underline-offset-4 hover:underline">Owner login</a>
+                </div>
+              </div>
+            </footer>
+
+            ${
+              !hideCartBar && totals.itemCount > 0
+                ? `<div class="fixed inset-x-0 bottom-0 z-40 p-3 sm:p-4">
+                    <a href="#/cart" onclick="event.preventDefault(); navigate('/cart')" class="mx-auto flex max-w-xl animate-rise items-center justify-between rounded-2xl bg-saffron px-5 py-3.5 text-primary-foreground shadow-lift">
+                      <span class="text-sm">
+                        <span class="font-semibold">${totals.itemCount} item${totals.itemCount > 1 ? "s" : ""}</span>
+                        <span class="opacity-80"> · ${formatINR(totals.subtotal)}</span>
+                      </span>
+                      <span class="inline-flex items-center gap-2 font-semibold">
+                        View cart
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                      </span>
+                    </a>
+                  </div>`
+                : ""
+            }
+          </div>
+        `;
+      }
+
+      // =========================================================================
+      // 8. PAGE VIEWS (HOME, CART, ORDER TRACKING, ADMIN DASHBOARD)
+      // =========================================================================
+
+      function renderMenuItemCard(item, orderingOpen) {
+        const qty = state.cart[item.id] || 0;
+        const soldOut = !item.is_available;
+
+        return `
+          <article class="group flex gap-4 rounded-2xl border border-border/70 bg-card p-3 shadow-warm transition-shadow hover:shadow-lift ${soldOut ? "opacity-70" : ""}">
+            ${renderDishThumb(item, soldOut)}
+            <div class="flex min-w-0 flex-1 flex-col">
+              <div class="flex items-start gap-2">
+                <span aria-label="Vegetarian" title="Vegetarian" class="mt-1.5 grid h-3.5 w-3.5 shrink-0 place-items-center rounded-[3px] border border-success">
+                  <span class="h-1.5 w-1.5 rounded-full bg-success"></span>
+                </span>
+                <h3 class="font-sans text-base font-semibold leading-snug text-foreground">${escapeHtml(item.name)}</h3>
+              </div>
+              ${
+                item.description
+                  ? `<p class="mt-1 line-clamp-2 text-sm leading-snug text-muted-foreground">${escapeHtml(item.description)}</p>`
+                  : ""
+              }
+              <div class="mt-auto flex items-center justify-between gap-2 pt-2">
+                <span class="text-lg font-semibold text-foreground">${formatINR(item.price)}</span>
+                ${
+                  soldOut || !orderingOpen
+                    ? ""
+                    : qty > 0
+                    ? renderQtyStepper(item.id, qty, "sm")
+                    : `<button
+                        type="button"
+                        onclick="addToCart('${item.id}')"
+                        class="inline-flex h-8 items-center gap-1 rounded-full border border-primary bg-primary/5 px-4 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                      >
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                        Add
+                      </button>`
+                }
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderHomePage() {
+        const open = state.settings.ordering_open;
+        const sortedCats = [...state.categories].sort((a, b) => a.sort_order - b.sort_order);
+        const sections = sortedCats
+          .map((c) => ({
+            ...c,
+            items: state.items
+              .filter((i) => i.category_id === c.id)
+              .sort((a, b) => a.sort_order - b.sort_order),
+          }))
+          .filter((c) => c.items.length > 0);
+
+        const uncategorized = state.items.filter(
+          (i) => !i.category_id || !sortedCats.some((c) => c.id === i.category_id)
+        );
+        if (uncategorized.length > 0) {
+          sections.push({
+            id: "other",
+            name: "Other",
+            description: null,
+            items: uncategorized,
+          });
+        }
+
+        const phones = phonesOf(state.settings.contact_phones);
+
+        const content = `
+          <!-- Hero -->
+          <section class="relative isolate overflow-hidden">
+            ${renderHeroBackdrop()}
+            <div class="absolute inset-0 -z-10 bg-hero-fade"></div>
+            <div class="mx-auto flex min-h-[520px] max-w-6xl flex-col justify-end px-4 pb-12 pt-24 text-ink-foreground sm:min-h-[580px]">
+              <p class="font-caps text-xs text-gold animate-rise">Pure vegetarian cloud kitchen</p>
+              <h1 class="mt-3 max-w-2xl text-4xl leading-[1.08] animate-rise sm:text-6xl" style="animation-delay: 80ms">
+                Delicious meals, delivered at your doorstep
+              </h1>
+              <p class="mt-4 max-w-xl text-lg text-ink-foreground/85 animate-rise" style="animation-delay: 160ms">
+                Fresh, fast, flavourful — cooked the way it’s done at home.
+              </p>
+              <div class="mt-7 flex flex-wrap items-center gap-3 animate-rise" style="animation-delay: 240ms">
+                <a href="#menu" class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-saffron px-8 text-base font-medium text-primary-foreground shadow-warm hover:brightness-105 transition-all">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>
+                  ${open ? "Order now" : "See the menu"}
+                </a>
+                <span class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium backdrop-blur ${
+                  open
+                    ? "bg-success/25 text-ink-foreground"
+                    : "bg-destructive/40 text-ink-foreground"
+                }">
+                  <span class="h-2 w-2 rounded-full ${
+                    open ? "bg-success animate-ring" : "bg-destructive"
+                  }"></span>
+                  ${open ? "Taking orders now" : "Ordering closed"}
+                </span>
+              </div>
+              <p class="mt-5 flex items-center gap-2 text-sm text-ink-foreground/75">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ${escapeHtml(state.settings.opening_hours)}
+              </p>
+            </div>
+          </section>
+
+          ${
+            !open
+              ? `<div class="border-y border-destructive/30 bg-destructive/10">
+                  <div class="mx-auto flex max-w-6xl items-start gap-3 px-4 py-4 text-sm text-foreground">
+                    <svg class="mt-0.5 h-5 w-5 shrink-0 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>
+                    <p><span class="font-semibold">Online ordering is closed.</span> ${escapeHtml(state.settings.closed_message)}</p>
+                  </div>
+                </div>`
+              : ""
+          }
+
+          <!-- Category chips -->
+          <div id="menu" class="sticky top-16 z-30 scroll-mt-16 border-b border-border/70 bg-background/95 backdrop-blur">
+            <div class="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3 scrollbar-none">
+              ${sections
+                .map(
+                  (s) => `
+                <a href="#cat-${s.id}" class="shrink-0 rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors">
+                  ${escapeHtml(s.name)}
+                </a>`
+                )
+                .join("")}
+            </div>
+          </div>
+
+          <div class="mx-auto max-w-6xl px-4">
+            ${sections
+              .map(
+                (s) => `
+              <section id="cat-${s.id}" class="scroll-mt-32 pt-12">
+                <div class="ornament font-caps text-[11px]">✦</div>
+                <h2 class="mt-3 text-center text-3xl text-foreground sm:text-4xl">${escapeHtml(s.name)}</h2>
+                ${
+                  s.description
+                    ? `<p class="mt-1 text-center text-sm text-muted-foreground">${escapeHtml(s.description)}</p>`
+                    : ""
+                }
+                <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  ${s.items.map((item) => renderMenuItemCard(item, open)).join("")}
+                </div>
+              </section>`
+              )
+              .join("")}
+          </div>
+
+          <!-- Pre-book -->
+          <section class="mt-16 bg-ink text-ink-foreground">
+            <div class="rule-gold opacity-60"></div>
+            <div class="mx-auto max-w-6xl px-4 py-14">
+              <p class="font-caps text-xs text-gold">Pre-book a day in advance</p>
+              <h2 class="mt-2 text-3xl sm:text-4xl">Specials &amp; bulk orders</h2>
+              <p class="mt-2 max-w-xl text-ink-foreground/75">Planning a family lunch, puja or party? Call us a day before and we’ll cook it fresh for you.</p>
+              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                ${PREBOOK.map(
+                  (p) => `
+                  <div class="rounded-2xl border border-gold/30 bg-sidebar-accent/40 p-5">
+                    <p class="font-display text-xl">${escapeHtml(p.name)}</p>
+                    <p class="mt-1 text-sm text-ink-foreground/70">${escapeHtml(p.note)}</p>
+                  </div>`
+                ).join("")}
+              </div>
+              <div class="mt-8 flex flex-wrap gap-3">
+                ${phones
+                  .map(
+                    (p) => `
+                  <a href="tel:${escapeHtml(p)}" class="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-gold/70 bg-transparent px-6 text-base font-medium text-ink-foreground hover:bg-gold/15 transition-colors">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    ${escapeHtml(p)}
+                  </a>`
+                  )
+                  .join("")}
+              </div>
+            </div>
+          </section>
+        `;
+
+        return renderCustomerShell(content);
+      }
+
+      function renderCartPage() {
+        const { priced, totals } = getCartSummary();
+        const settings = state.settings;
+        const upiAvailable = Boolean((settings.upi_id || "").trim());
+        const unavailable = priced.filter((p) => !p.item.is_available);
+
+        if (priced.length === 0) {
+          return renderCustomerShell(
+            `
+            <div class="mx-auto max-w-md px-4 py-24 text-center">
+              <div class="ornament font-caps text-[11px]">✦</div>
+              <h1 class="mt-4 text-3xl">Your cart is empty</h1>
+              <p class="mt-2 text-muted-foreground">Pick something delicious from our menu.</p>
+              <a href="#/" onclick="event.preventDefault(); navigate('/')" class="mt-6 inline-flex h-11 items-center justify-center rounded-lg bg-saffron px-6 text-base font-medium text-primary-foreground shadow-warm hover:brightness-105">
+                Browse the menu
+              </a>
+            </div>
+            `,
+            { hideCartBar: true }
+          );
+        }
+
+        const canOrder =
+          settings.ordering_open && totals.meetsMinimum && unavailable.length === 0;
+        const f = state.checkoutForm;
+        const errs = state.checkoutErrors;
+
+        const content = `
+          <div class="mx-auto max-w-5xl px-4 py-8">
+            <a href="#/" onclick="event.preventDefault(); navigate('/')" class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+              Continue shopping
+            </a>
+            <h1 class="mt-3 text-4xl">Checkout</h1>
+
+            <form onsubmit="placeOrder(event)" class="mt-6 grid gap-6 lg:grid-cols-[1fr_380px]">
+              <div class="space-y-6">
+                <section class="rounded-2xl border border-border bg-card p-5 shadow-warm">
+                  <h2 class="text-xl">Your order</h2>
+                  <ul class="mt-4 divide-y divide-border">
+                    ${priced
+                      .map(
+                        ({ item, quantity }) => `
+                      <li class="flex items-center gap-3 py-3">
+                        ${renderDishThumb(item, !item.is_available, "h-14 w-14")}
+                        <div class="min-w-0 flex-1">
+                          <p class="font-medium leading-tight">${escapeHtml(item.name)}</p>
+                          <p class="text-sm text-muted-foreground">${formatINR(item.price)} each</p>
+                          ${
+                            !item.is_available
+                              ? `<p class="text-sm font-medium text-destructive">Sold out — please remove</p>`
+                              : ""
+                          }
+                        </div>
+                        <div class="flex flex-col items-end gap-1.5">
+                          ${
+                            item.is_available
+                              ? renderQtyStepper(item.id, quantity, "sm")
+                              : `<button type="button" onclick="setCartQty('${item.id}', 0)" class="inline-flex h-8 items-center gap-1.5 rounded-md border border-input bg-background px-3 text-xs font-medium hover:bg-accent">
+                                  Remove
+                                </button>`
+                          }
+                          <span class="text-sm font-semibold">${formatINR(item.price * quantity)}</span>
+                        </div>
+                      </li>`
+                      )
+                      .join("")}
+                  </ul>
+                </section>
+
+                <section class="rounded-2xl border border-border bg-card p-5 shadow-warm">
+                  <h2 class="text-xl">Delivery details</h2>
+                  <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                    <div class="space-y-1.5">
+                      <label class="text-sm font-medium" for="chk-name">Your name</label>
+                      <input id="chk-name" type="text" maxlength="80" placeholder="e.g. Priya Sharma"
+                        value="${escapeHtml(f.name)}"
+                        oninput="state.checkoutForm.name = this.value"
+                        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm" />
+                      ${errs.name ? `<p class="text-sm text-destructive">${escapeHtml(errs.name)}</p>` : ""}
+                    </div>
+                    <div class="space-y-1.5">
+                      <label class="text-sm font-medium" for="chk-phone">Mobile number</label>
+                      <input id="chk-phone" type="tel" inputmode="tel" maxlength="16" placeholder="10-digit mobile"
+                        value="${escapeHtml(f.phone)}"
+                        oninput="state.checkoutForm.phone = this.value"
+                        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm" />
+                      ${errs.phone ? `<p class="text-sm text-destructive">${escapeHtml(errs.phone)}</p>` : ""}
+                    </div>
+                    <div class="space-y-1.5 sm:col-span-2">
+                      <label class="text-sm font-medium" for="chk-addr">Full delivery address</label>
+                      <textarea id="chk-addr" rows="3" maxlength="400" placeholder="House / flat no., street, area, city"
+                        oninput="state.checkoutForm.address = this.value"
+                        class="flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm">${escapeHtml(f.address)}</textarea>
+                      ${errs.address ? `<p class="text-sm text-destructive">${escapeHtml(errs.address)}</p>` : ""}
+                    </div>
+                    <div class="space-y-1.5">
+                      <label class="text-sm font-medium" for="chk-landmark">Landmark (optional)</label>
+                      <input id="chk-landmark" type="text" maxlength="200" placeholder="Near…"
+                        value="${escapeHtml(f.landmark)}"
+                        oninput="state.checkoutForm.landmark = this.value"
+                        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm" />
+                    </div>
+                    <div class="space-y-1.5">
+                      <label class="text-sm font-medium" for="chk-notes">Note for the kitchen (optional)</label>
+                      <input id="chk-notes" type="text" maxlength="500" placeholder="Less spicy, raita choice…"
+                        value="${escapeHtml(f.notes)}"
+                        oninput="state.checkoutForm.notes = this.value"
+                        class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm" />
+                    </div>
+                  </div>
+                </section>
+
+                <section class="rounded-2xl border border-border bg-card p-5 shadow-warm">
+                  <h2 class="text-xl">Payment</h2>
+                  <div class="mt-4 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Payment method">
+                    <button type="button" role="radio" aria-checked="${state.checkoutPayment === "cod"}"
+                      onclick="state.checkoutPayment = 'cod'; render();"
+                      class="flex items-start gap-3 rounded-xl border p-4 text-left transition-colors ${
+                        state.checkoutPayment === "cod"
+                          ? "border-primary bg-primary/5 ring-1 ring-primary"
+                          : "border-border hover:border-primary/50"
+                      }">
+                      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full ${
+                        state.checkoutPayment === "cod"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground"
+                      }">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+                      </span>
+                      <span>
+                        <span class="block font-semibold">Cash on delivery</span>
+                        <span class="block text-sm text-muted-foreground">Pay when your food arrives</span>
+                      </span>
+                    </button>
+
+                    ${
+                      upiAvailable
+                        ? `<button type="button" role="radio" aria-checked="${state.checkoutPayment === "upi"}"
+                            onclick="state.checkoutPayment = 'upi'; render();"
+                            class="flex items-start gap-3 rounded-xl border p-4 text-left transition-colors ${
+                              state.checkoutPayment === "upi"
+                                ? "border-primary bg-primary/5 ring-1 ring-primary"
+                                : "border-border hover:border-primary/50"
+                            }">
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full ${
+                              state.checkoutPayment === "upi"
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-muted text-muted-foreground"
+                            }">
+                              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                            </span>
+                            <span>
+                              <span class="block font-semibold">Pay online (UPI)</span>
+                              <span class="block text-sm text-muted-foreground">GPay, PhonePe, Paytm &amp; more</span>
+                            </span>
+                          </button>`
+                        : ""
+                    }
+                  </div>
+                </section>
+              </div>
+
+              <aside class="lg:sticky lg:top-24 lg:self-start">
+                <div class="rounded-2xl border border-border bg-card p-5 shadow-warm">
+                  <h2 class="text-xl">Bill summary</h2>
+                  <dl class="mt-4 space-y-2 text-sm">
+                    <div class="flex items-center justify-between text-muted-foreground">
+                      <dt>Items (${totals.itemCount})</dt>
+                      <dd class="font-medium text-foreground">${formatINR(totals.subtotal)}</dd>
+                    </div>
+                    <div class="flex items-center justify-between text-muted-foreground">
+                      <dt>Delivery</dt>
+                      <dd class="font-medium text-foreground">${
+                        totals.deliveryFee === 0 ? "Free" : formatINR(totals.deliveryFee)
+                      }</dd>
+                    </div>
+                    <div class="rule-gold my-3 opacity-50"></div>
+                    <div class="flex items-center justify-between text-muted-foreground">
+                      <dt class="text-base font-semibold text-foreground">To pay</dt>
+                      <dd class="text-xl font-semibold text-foreground">${formatINR(totals.total)}</dd>
+                    </div>
+                  </dl>
+
+                  ${
+                    !settings.ordering_open
+                      ? `<p class="mt-4 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">Online ordering is closed right now. ${escapeHtml(settings.closed_message)}</p>`
+                      : ""
+                  }
+                  ${
+                    settings.ordering_open && !totals.meetsMinimum
+                      ? `<p class="mt-4 rounded-lg bg-warning/25 p-3 text-sm text-warning-foreground">Minimum order is ${formatINR(settings.min_order)}. Add ${formatINR(totals.shortBy)} more.</p>`
+                      : ""
+                  }
+
+                  <button type="submit" ${!canOrder ? "disabled" : ""}
+                    class="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-saffron px-8 text-base font-medium text-primary-foreground shadow-warm hover:brightness-105 disabled:pointer-events-none disabled:opacity-50">
+                    Place order · ${formatINR(totals.total)}
+                  </button>
+                  <p class="mt-3 text-center text-xs text-muted-foreground">You’ll get a live status page right after ordering.</p>
+                </div>
+              </aside>
+            </form>
+          </div>
+        `;
+
+        return renderCustomerShell(content, { hideCartBar: true });
+      }
+
+      function renderOrderPage(orderId) {
+        const order = state.orders.find((o) => o.id === orderId);
+        if (!order) {
+          return renderCustomerShell(`
+            <div class="mx-auto max-w-md px-4 py-24 text-center">
+              <h1 class="text-3xl">Order not found</h1>
+              <p class="mt-2 text-muted-foreground">Please check the link, or call us for help.</p>
+              <a href="#/" onclick="event.preventDefault(); navigate('/')" class="mt-6 inline-flex h-10 items-center justify-center rounded-md bg-saffron px-4 py-2 text-sm font-medium text-primary-foreground shadow-warm">Back to menu</a>
+            </div>
+          `);
+        }
+
+        const phones = phonesOf(state.settings.contact_phones);
+        const stopped = order.status === "rejected" || order.status === "cancelled";
+        const currentIdx = PROGRESS_STEPS.indexOf(order.status);
+
+        const stepLabels = {
+          pending: "Placed",
+          accepted: "Confirmed",
+          preparing: "Cooking",
+          out_for_delivery: "On the way",
+          delivered: "Delivered",
+        };
+
+        let upiPanelHtml = "";
+        if (order.payment_method === "upi" && !stopped) {
+          if (order.payment_status === "paid") {
+            upiPanelHtml = `
+              <div class="mt-6 flex items-center gap-3 rounded-2xl border border-success/40 bg-success/10 p-5">
+                <svg class="h-6 w-6 text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <p class="font-medium">Payment of ${formatINR(order.total)} received. Thank you!</p>
+              </div>
+            `;
+          } else if (state.settings.upi_id) {
+            const link = buildUpiLink({
+              upiId: state.settings.upi_id,
+              payeeName: state.settings.upi_payee_name,
+              amount: order.total,
+              orderNumber: order.order_number,
+            });
+            upiPanelHtml = `
+              <div class="mt-6 rounded-2xl border border-primary/40 bg-primary/5 p-5">
+                <h2 class="text-xl">Pay ${formatINR(order.total)} by UPI</h2>
+                <p class="mt-1 text-sm text-muted-foreground">Tap the button on your phone to open GPay, PhonePe, Paytm or any UPI app.</p>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                  <a href="${escapeHtml(link)}" class="inline-flex h-11 items-center justify-center rounded-lg bg-saffron px-6 text-base font-medium text-primary-foreground shadow-warm">Pay now with UPI</a>
+                  <button type="button" onclick="copyToClipboard('${escapeHtml(state.settings.upi_id)}', 'UPI ID copied')" class="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm hover:bg-muted">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    ${escapeHtml(state.settings.upi_id)}
+                  </button>
+                </div>
+                <div class="mt-5">
+                  ${
+                    order.upi_reference
+                      ? `<p class="text-sm">Reference submitted: <span class="font-mono font-medium">${escapeHtml(order.upi_reference)}</span> — waiting for the kitchen to confirm.</p>`
+                      : `
+                        <p class="text-sm font-medium">After paying, enter the UPI reference / UTR number</p>
+                        <div class="mt-2 flex gap-2">
+                          <input id="upi-ref-input" type="text" placeholder="e.g. 412345678901" maxlength="40" inputmode="numeric"
+                            class="flex h-9 w-full rounded-md border border-input bg-card px-3 py-1 text-base shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:text-sm" />
+                          <button type="button" onclick="submitUpiReference('${order.id}')" class="inline-flex h-9 items-center justify-center rounded-md bg-ink px-4 text-sm font-medium text-ink-foreground shadow-sm hover:bg-ink/90">
+                            Submit
+                          </button>
+                        </div>
+                      `
+                  }
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        const content = `
+          <div class="mx-auto max-w-3xl px-4 py-8">
+            <div class="rounded-3xl border border-border bg-card p-6 text-center shadow-warm sm:p-8">
+              <p class="font-caps text-xs text-gold">Order #${order.order_number}</p>
+              ${
+                stopped
+                  ? `
+                    <svg class="mx-auto mt-4 h-14 w-14 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                    <h1 class="mt-3 text-3xl">Order ${order.status === "rejected" ? "not accepted" : "cancelled"}</h1>
+                    <p class="mt-2 text-muted-foreground">${escapeHtml(order.reject_reason || "Sorry, we couldn’t take this order. Please call us for help.")}</p>
+                  `
+                  : `
+                    <h1 class="mt-3 text-3xl sm:text-4xl">${
+                      order.status === "pending"
+                        ? "Thank you! Order placed"
+                        : STATUS_LABEL[order.status]
+                    }</h1>
+                    <p class="mt-2 text-muted-foreground">
+                      ${
+                        order.status === "pending"
+                          ? "The kitchen will confirm your order shortly. This page updates by itself."
+                          : order.status === "accepted"
+                          ? "Your order is confirmed and will be cooked fresh."
+                          : order.status === "preparing"
+                          ? "Our cooks are preparing your food right now."
+                          : order.status === "out_for_delivery"
+                          ? "Your food is on the way!"
+                          : "Enjoy your meal! We hope to serve you again."
+                      }
+                    </p>
+
+                    <ol class="mt-8 grid grid-cols-5 gap-1">
+                      ${PROGRESS_STEPS.map((s, i) => {
+                        const done = i <= currentIdx;
+                        const current = i === currentIdx;
+                        return `
+                          <li class="flex flex-col items-center gap-2">
+                            <span class="grid h-10 w-10 place-items-center rounded-full border-2 transition-colors ${
+                              done
+                                ? "border-primary bg-primary text-primary-foreground"
+                                : "border-border bg-muted text-muted-foreground"
+                            } ${current && s !== "delivered" ? "animate-ring" : ""}">
+                              ${
+                                done && !current
+                                  ? `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`
+                                  : `<span class="text-xs font-bold">${i + 1}</span>`
+                              }
+                            </span>
+                            <span class="text-[11px] leading-tight sm:text-xs ${
+                              done ? "font-semibold text-foreground" : "text-muted-foreground"
+                            }">
+                              ${stepLabels[s]}
+                            </span>
+                          </li>
+                        `;
+                      }).join("")}
+                    </ol>
+                  `
+              }
+            </div>
+
+            ${upiPanelHtml}
+
+            <div class="mt-6 rounded-2xl border border-border bg-card p-5 shadow-warm">
+              <h2 class="text-xl">Order details</h2>
+              <ul class="mt-3 divide-y divide-border text-sm">
+                ${order.order_items
+                  .map(
+                    (it) => `
+                  <li class="flex justify-between py-2">
+                    <span>${it.quantity} × ${escapeHtml(it.name)}</span>
+                    <span class="font-medium">${formatINR(it.unit_price * it.quantity)}</span>
+                  </li>`
+                  )
+                  .join("")}
+              </ul>
+              <div class="rule-gold my-3 opacity-50"></div>
+              <div class="space-y-1 text-sm">
+                <div class="flex justify-between text-muted-foreground"><span>Items</span><span>${formatINR(order.subtotal)}</span></div>
+                <div class="flex justify-between text-muted-foreground"><span>Delivery</span><span>${order.delivery_fee ? formatINR(order.delivery_fee) : "Free"}</span></div>
+                <div class="flex justify-between pt-1 text-base font-semibold"><span>Total</span><span>${formatINR(order.total)}</span></div>
+              </div>
+              <div class="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+                <div class="rounded-xl bg-muted p-3">
+                  <p class="text-muted-foreground">Deliver to</p>
+                  <p class="font-medium">${escapeHtml(order.customer_name)}</p>
+                  <p>${escapeHtml(order.address)}</p>
+                </div>
+                <div class="rounded-xl bg-muted p-3">
+                  <p class="text-muted-foreground">Payment</p>
+                  <p class="font-medium">${PAYMENT_LABEL[order.payment_method]}</p>
+                  <p>${
+                    order.payment_status === "paid"
+                      ? "Paid ✓"
+                      : order.payment_method === "cod"
+                      ? `Pay ${formatINR(order.total)} on delivery`
+                      : "Awaiting payment"
+                  }</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <span class="text-sm text-muted-foreground">Need help?</span>
+              ${phones
+                .map(
+                  (p) => `
+                <a href="tel:${escapeHtml(p)}" class="inline-flex h-8 items-center gap-1.5 rounded-md border border-input bg-background px-3 text-xs font-medium shadow-sm hover:bg-accent">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  ${escapeHtml(p)}
+                </a>`
+                )
+                .join("")}
+            </div>
+            <div class="mt-6 text-center">
+              <a href="#/" onclick="event.preventDefault(); navigate('/')" class="text-sm font-medium text-primary underline-offset-4 hover:underline">Order something else</a>
+            </div>
+          </div>
+        `;
+
+        return renderCustomerShell(content);
+      }
+
+      // =========================================================================
+      // 9. OWNER DASHBOARD (/admin, /admin/menu, /admin/settings)
+      // =========================================================================
+
+      function renderOwnerLogin() {
+        const ownerExists = Boolean(state.ownerAccount);
+        return `
+          <div class="flex min-h-screen items-center justify-center bg-background px-4">
+            <form onsubmit="handleOwnerAuth(event)" class="w-full max-w-sm space-y-4 rounded-xl border bg-card p-6 shadow-sm">
+              <div class="flex justify-center">
+                <div class="rounded-xl bg-ink px-4 py-2.5">
+                  ${renderBrandLogo("h-12")}
+                </div>
+              </div>
+              <h1 class="text-center text-xl font-semibold">
+                ${!ownerExists ? "Create owner account" : "Owner login"}
+              </h1>
+              <div class="space-y-1.5">
+                <label class="text-sm font-medium" for="owner-email">Email</label>
+                <input id="owner-email" type="email" required value="${
+                  ownerExists ? escapeHtml(state.ownerAccount.email) : ""
+                }" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
+              </div>
+              <div class="space-y-1.5">
+                <label class="text-sm font-medium" for="owner-pw">Password</label>
+                <input id="owner-pw" type="password" required minlength="8" placeholder="Minimum 8 characters" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
+              </div>
+              <button type="submit" class="inline-flex h-9 w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90">
+                ${!ownerExists ? "Create account" : "Sign in"}
+              </button>
+              ${
+                !ownerExists
+                  ? `<p class="text-center text-xs text-muted-foreground">The first account created becomes the only owner.</p>`
+                  : ""
+              }
+              <div class="pt-2 text-center">
+                <a href="#/" onclick="event.preventDefault(); navigate('/')" class="text-xs text-muted-foreground hover:text-foreground">← Back to storefront</a>
+              </div>
+            </form>
+          </div>
+        `;
+      }
+
+      function renderAdminOrdersTab() {
+        const open = state.settings.ordering_open;
+        const activeCount = state.orders.filter((o) =>
+          ACTIVE_STATUSES.includes(o.status)
+        ).length;
+        const shown = state.orders.filter(
+          (o) =>
+            (state.adminOrderFilter === "active") ===
+            ACTIVE_STATUSES.includes(o.status)
+        );
+
+        return `
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-card p-4">
+              <div>
+                <p class="font-medium">Online ordering</p>
+                <p class="text-sm text-muted-foreground">${
+                  open ? "Customers can place orders" : "Ordering is closed"
+                }</p>
+              </div>
+              <label class="relative inline-flex cursor-pointer items-center">
+                <input type="checkbox" ${open ? "checked" : ""} onchange="toggleOrderingOpen(this.checked)" class="peer sr-only" />
+                <div class="h-6 w-11 rounded-full bg-input peer-checked:bg-primary transition-colors after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-background after:shadow after:transition-all peer-checked:after:translate-x-5"></div>
+              </label>
+            </div>
+
+            <div class="flex gap-2">
+              <button type="button" onclick="state.adminOrderFilter = 'active'; render();"
+                class="inline-flex h-8 items-center rounded-md px-3 text-xs font-medium ${
+                  state.adminOrderFilter === "active"
+                    ? "bg-primary text-primary-foreground shadow"
+                    : "border border-input bg-background hover:bg-accent"
+                }">
+                Active (${activeCount})
+              </button>
+              <button type="button" onclick="state.adminOrderFilter = 'done'; render();"
+                class="inline-flex h-8 items-center rounded-md px-3 text-xs font-medium ${
+                  state.adminOrderFilter === "done"
+                    ? "bg-primary text-primary-foreground shadow"
+                    : "border border-input bg-background hover:bg-accent"
+                }">
+                Completed
+              </button>
+            </div>
+
+            ${
+              shown.length === 0
+                ? `<p class="py-12 text-center text-muted-foreground">No orders here yet.</p>`
+                : ""
+            }
+
+            <div class="grid gap-4 md:grid-cols-2">
+              ${shown
+                .map((o) => {
+                  const next = NEXT_STATUS[o.status];
+                  return `
+                    <div class="space-y-3 rounded-xl border bg-card p-4 ${
+                      o.status === "pending" ? "border-primary ring-1 ring-primary" : ""
+                    }">
+                      <div class="flex items-start justify-between gap-2">
+                        <div>
+                          <p class="font-semibold">#${o.order_number} · ${escapeHtml(o.customer_name)}</p>
+                          <p class="text-xs text-muted-foreground">${new Date(o.created_at).toLocaleString("en-IN")}</p>
+                        </div>
+                        <span class="inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold ${
+                          o.status === "pending"
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-secondary text-secondary-foreground"
+                        }">
+                          ${SHORT_STATUS[o.status]}
+                        </span>
+                      </div>
+
+                      <div class="space-y-1 text-sm">
+                        <a href="tel:${escapeHtml(o.phone)}" class="flex items-center gap-1 text-primary hover:underline">
+                          📞 ${escapeHtml(o.phone)}
+                        </a>
+                        <p>📍 ${escapeHtml(o.address)}${o.landmark ? ` (${escapeHtml(o.landmark)})` : ""}</p>
+                        ${o.notes ? `<p class="rounded bg-muted p-2 text-xs">Note: ${escapeHtml(o.notes)}</p>` : ""}
+                      </div>
+
+                      <ul class="divide-y text-sm">
+                        ${o.order_items
+                          .map(
+                            (i) => `
+                          <li class="flex justify-between py-1">
+                            <span>${i.quantity} × ${escapeHtml(i.name)}</span>
+                            <span>${formatINR(i.unit_price * i.quantity)}</span>
+                          </li>`
+                          )
+                          .join("")}
+                      </ul>
+
+                      <div class="flex justify-between border-t pt-2 text-sm">
+                        <span>
+                          ${PAYMENT_LABEL[o.payment_method]} · <b>${
+                    o.payment_status === "paid" ? "Paid" : "Unpaid"
+                  }</b>
+                          ${
+                            o.upi_reference
+                              ? `<span class="block text-xs text-muted-foreground">UPI ref: ${escapeHtml(o.upi_reference)}</span>`
+                              : ""
+                          }
+                        </span>
+                        <span class="font-semibold">${formatINR(o.total)}</span>
+                      </div>
+
+                      <div class="flex flex-wrap gap-2">
+                        ${
+                          o.status === "pending"
+                            ? `
+                              <button type="button" onclick="updateOrder('${o.id}', { status: 'accepted' })" class="inline-flex h-8 items-center rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground shadow hover:bg-primary/90">Accept</button>
+                              <button type="button" onclick="state.rejectModalOrderId = '${o.id}'; state.rejectModalReason = 'Sorry, we can\\'t take this order right now.'; render();" class="inline-flex h-8 items-center rounded-md bg-destructive px-3 text-xs font-medium text-destructive-foreground shadow-sm hover:bg-destructive/90">Reject</button>
+                            `
+                            : ""
+                        }
+                        ${
+                          next
+                            ? `<button type="button" onclick="updateOrder('${o.id}', { status: '${next.to}' })" class="inline-flex h-8 items-center rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground shadow hover:bg-primary/90">${next.label}</button>`
+                            : ""
+                        }
+                        ${
+                          o.payment_status === "unpaid" && o.status !== "rejected"
+                            ? `<button type="button" onclick="updateOrder('${o.id}', { payment_status: 'paid' })" class="inline-flex h-8 items-center rounded-md border border-input bg-background px-3 text-xs font-medium shadow-sm hover:bg-accent">Mark paid</button>`
+                            : ""
+                        }
+                        ${
+                          ACTIVE_STATUSES.includes(o.status) && o.status !== "pending"
+                            ? `<button type="button" onclick="state.cancelConfirmOrderId = '${o.id}'; render();" class="inline-flex h-8 items-center rounded-md px-3 text-xs font-medium hover:bg-accent">Cancel</button>`
+                            : ""
+                        }
+                        <a href="#/order/${o.id}" onclick="event.preventDefault(); navigate('/order/${o.id}')" class="ml-auto inline-flex h-8 items-center rounded-md px-2 text-xs text-muted-foreground hover:text-foreground">View live page →</a>
+                      </div>
+                    </div>
+                  `;
+                })
+                .join("")}
+            </div>
+
+            ${
+              state.rejectModalOrderId
+                ? `<div class="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4">
+                    <div class="w-full max-w-md space-y-4 rounded-xl border bg-background p-6 shadow-lg">
+                      <h3 class="text-lg font-semibold">Reject order</h3>
+                      <div class="space-y-1.5">
+                        <label class="text-sm font-medium">Reason for rejecting (shown to customer):</label>
+                        <input id="reject-reason-input" type="text" value="${escapeHtml(state.rejectModalReason)}" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm" />
+                      </div>
+                      <div class="flex justify-end gap-2">
+                        <button type="button" onclick="state.rejectModalOrderId = null; render();" class="inline-flex h-9 items-center rounded-md border border-input px-4 text-sm font-medium hover:bg-accent">Close</button>
+                        <button type="button" onclick="const r = document.getElementById('reject-reason-input').value; updateOrder('${state.rejectModalOrderId}', { status: 'rejected', reject_reason: r }); state.rejectModalOrderId = null; render();" class="inline-flex h-9 items-center rounded-md bg-destructive px-4 text-sm font-medium text-destructive-foreground">Reject order</button>
+                      </div>
+                    </div>
+                  </div>`
+                : ""
+            }
+
+            ${
+              state.cancelConfirmOrderId
+                ? `<div class="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4">
+                    <div class="w-full max-w-sm space-y-4 rounded-xl border bg-background p-6 shadow-lg">
+                      <h3 class="text-lg font-semibold">Cancel this order?</h3>
+                      <p class="text-sm text-muted-foreground">The customer will see that their order has been cancelled.</p>
+                      <div class="flex justify-end gap-2">
+                        <button type="button" onclick="state.cancelConfirmOrderId = null; render();" class="inline-flex h-9 items-center rounded-md border border-input px-4 text-sm font-medium hover:bg-accent">Keep order</button>
+                        <button type="button" onclick="updateOrder('${state.cancelConfirmOrderId}', { status: 'cancelled' }); state.cancelConfirmOrderId = null; render();" class="inline-flex h-9 items-center rounded-md bg-destructive px-4 text-sm font-medium text-destructive-foreground">Cancel order</button>
+                      </div>
+                    </div>
+                  </div>`
+                : ""
+            }
+          </div>
+        `;
+      }
+
+      function renderAdminMenuTab() {
+        const q = state.adminMenuQuery.toLowerCase();
+        const filtered = state.items.filter((i) => i.name.toLowerCase().includes(q));
+        const sortedCats = [...state.categories].sort((a, b) => a.sort_order - b.sort_order);
+        const groups = [
+          ...sortedCats.map((c) => ({ id: c.id, name: c.name })),
+          { id: null, name: "Other" },
+        ];
+        const draft = state.adminMenuDraft;
+
+        return `
+          <div class="space-y-4">
+            <div class="flex gap-2">
+              <input type="text" placeholder="Search dishes…" value="${escapeHtml(state.adminMenuQuery)}"
+                oninput="state.adminMenuQuery = this.value; render();"
+                class="flex h-9 w-full rounded-md border border-input bg-card px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
+              <button type="button"
+                onclick="state.adminMenuDraft = { name: '', description: '', price: '', image_url: '', category_id: '${sortedCats[0]?.id || ""}' }; render();"
+                class="inline-flex h-9 shrink-0 items-center gap-1 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90">
+                + Add dish
+              </button>
+            </div>
+
+            ${groups
+              .map((g) => {
+                const list = filtered
+                  .filter((i) => (g.id === null ? !i.category_id : i.category_id === g.id))
+                  .sort((a, b) => a.sort_order - b.sort_order);
+                if (!list.length) return "";
+                return `
+                  <section class="rounded-xl border bg-card">
+                    <h2 class="border-b px-4 py-2 font-sans text-base font-semibold">${escapeHtml(g.name)}</h2>
+                    <ul class="divide-y">
+                      ${list
+                        .map(
+                          (it) => `
+                        <li class="flex items-center gap-3 px-4 py-2.5">
+                          <div class="min-w-0 flex-1">
+                            <p class="truncate font-medium ${
+                              it.is_available ? "" : "text-muted-foreground line-through"
+                            }">${escapeHtml(it.name)}</p>
+                            <div class="mt-0.5 flex items-center gap-1 text-sm">
+                              ₹<input type="number" min="0" value="${it.price}"
+                                onblur="const v = Number(this.value); if (Number.isInteger(v) && v >= 0 && v !== ${it.price}) { patchMenuItem('${it.id}', { price: v }); showToast('${escapeHtml(it.name)}: ' + formatINR(v), 'success'); }"
+                                class="h-7 w-20 rounded-md border border-input bg-transparent px-2 text-sm" />
+                            </div>
+                          </div>
+
+                          <label class="relative inline-flex cursor-pointer items-center" aria-label="Available">
+                            <input type="checkbox" ${it.is_available ? "checked" : ""}
+                              onchange="patchMenuItem('${it.id}', { is_available: this.checked })"
+                              class="peer sr-only" />
+                            <div class="h-5 w-9 rounded-full bg-input peer-checked:bg-primary transition-colors after:absolute after:left-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:bg-background after:shadow after:transition-all peer-checked:after:translate-x-4"></div>
+                          </label>
+
+                          <button type="button" title="Edit dish"
+                            onclick="state.adminMenuDraft = { id: '${it.id}', name: ${escapeHtml(JSON.stringify(it.name))}, description: ${escapeHtml(JSON.stringify(it.description || ""))}, price: '${it.price}', image_url: ${escapeHtml(JSON.stringify(it.image_url || ""))}, category_id: '${it.category_id || ""}' }; render();"
+                            class="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent">
+                            ✎
+                          </button>
+                          <button type="button" title="Delete dish"
+                            onclick="state.deleteConfirmItem = { id: '${it.id}', name: ${escapeHtml(JSON.stringify(it.name))} }; render();"
+                            class="inline-flex h-8 w-8 items-center justify-center rounded-md text-destructive hover:bg-accent">
+                            🗑
+                          </button>
+                        </li>`
+                        )
+                        .join("")}
+                    </ul>
+                  </section>
+                `;
+              })
+              .join("")}
+
+            ${
+              draft
+                ? `<div class="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4">
+                    <div class="w-full max-w-lg space-y-4 rounded-xl border bg-background p-6 shadow-lg">
+                      <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold">${draft.id ? "Edit dish" : "Add dish"}</h3>
+                        <button type="button" onclick="state.adminMenuDraft = null; render();" class="text-sm text-muted-foreground hover:text-foreground">✕</button>
+                      </div>
+                      <div class="space-y-3">
+                        <div>
+                          <label class="text-sm font-medium">Name</label>
+                          <input id="draft-name" type="text" value="${escapeHtml(draft.name)}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+                        </div>
+                        <div>
+                          <label class="text-sm font-medium">Price (₹)</label>
+                          <input id="draft-price" type="number" min="0" value="${escapeHtml(draft.price)}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+                        </div>
+                        <div>
+                          <label class="text-sm font-medium">Category</label>
+                          <select id="draft-cat" class="mt-1 h-9 w-full rounded-md border border-input bg-background px-2 text-sm">
+                            <option value="">Other</option>
+                            ${sortedCats
+                              .map(
+                                (c) =>
+                                  `<option value="${c.id}" ${
+                                    draft.category_id === c.id ? "selected" : ""
+                                  }>${escapeHtml(c.name)}</option>`
+                              )
+                              .join("")}
+                          </select>
+                        </div>
+                        <div>
+                          <label class="text-sm font-medium">Description</label>
+                          <textarea id="draft-desc" rows="2" class="mt-1 flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm">${escapeHtml(draft.description)}</textarea>
+                        </div>
+                        <div>
+                          <label class="text-sm font-medium">Photo link (optional)</label>
+                          <input id="draft-img" type="text" placeholder="https://…" value="${escapeHtml(draft.image_url)}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+                        </div>
+                        <button type="button" onclick="saveMenuDraft()" class="inline-flex h-9 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90">
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>`
+                : ""
+            }
+
+            ${
+              state.deleteConfirmItem
+                ? `<div class="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4">
+                    <div class="w-full max-w-sm space-y-4 rounded-xl border bg-background p-6 shadow-lg">
+                      <h3 class="text-lg font-semibold">Delete "${escapeHtml(state.deleteConfirmItem.name)}" from the menu?</h3>
+                      <div class="flex justify-end gap-2">
+                        <button type="button" onclick="state.deleteConfirmItem = null; render();" class="inline-flex h-9 items-center rounded-md border border-input px-4 text-sm font-medium hover:bg-accent">Cancel</button>
+                        <button type="button" onclick="deleteMenuItem('${state.deleteConfirmItem.id}')" class="inline-flex h-9 items-center rounded-md bg-destructive px-4 text-sm font-medium text-destructive-foreground">Delete</button>
+                      </div>
+                    </div>
+                  </div>`
+                : ""
+            }
+          </div>
+        `;
+      }
+
+      function renderAdminSettingsTab() {
+        const s = state.settings;
+        return `
+          <form onsubmit="saveStoreSettings(event)" class="mx-auto max-w-xl space-y-4 rounded-xl border bg-card p-5">
+            <div class="flex items-center justify-between">
+              <label class="text-sm font-medium" for="set-open">Online ordering open</label>
+              <label class="relative inline-flex cursor-pointer items-center">
+                <input id="set-open" type="checkbox" ${s.ordering_open ? "checked" : ""} class="peer sr-only" />
+                <div class="h-5 w-9 rounded-full bg-input peer-checked:bg-primary transition-colors after:absolute after:left-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:bg-background after:shadow after:transition-all peer-checked:after:translate-x-4"></div>
+              </label>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-sm font-medium" for="set-fee">Delivery fee (₹)</label>
+                <input id="set-fee" type="number" min="0" value="${s.delivery_fee}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+              </div>
+              <div>
+                <label class="text-sm font-medium" for="set-min">Minimum order (₹)</label>
+                <input id="set-min" type="number" min="0" value="${s.min_order}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+              </div>
+            </div>
+            <div>
+              <label class="text-sm font-medium" for="set-upi">UPI ID (leave empty to hide online payment)</label>
+              <input id="set-upi" type="text" placeholder="name@upi" value="${escapeHtml(s.upi_id || "")}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+            </div>
+            <div>
+              <label class="text-sm font-medium" for="set-payee">UPI payee name</label>
+              <input id="set-payee" type="text" value="${escapeHtml(s.upi_payee_name)}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+            </div>
+            <div>
+              <label class="text-sm font-medium" for="set-phones">Contact phones</label>
+              <input id="set-phones" type="text" value="${escapeHtml(s.contact_phones)}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+            </div>
+            <div>
+              <label class="text-sm font-medium" for="set-hours">Opening hours</label>
+              <input id="set-hours" type="text" value="${escapeHtml(s.opening_hours)}" class="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm" />
+            </div>
+            <div>
+              <label class="text-sm font-medium" for="set-closed-msg">Message when closed</label>
+              <textarea id="set-closed-msg" rows="3" class="mt-1 flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm">${escapeHtml(s.closed_message)}</textarea>
+            </div>
+            <button type="submit" class="inline-flex h-9 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90">
+              Save settings
+            </button>
+          </form>
+        `;
+      }
+
+      function renderAdminLayout() {
+        if (!state.ownerSignedIn) {
+          return renderOwnerLogin();
+        }
+
+        const tabs = [
+          { to: "/admin", label: "Orders" },
+          { to: "/admin/menu", label: "Menu" },
+          { to: "/admin/settings", label: "Settings" },
+        ];
+
+        let tabContent = "";
+        if (state.route === "/admin/menu") tabContent = renderAdminMenuTab();
+        else if (state.route === "/admin/settings") tabContent = renderAdminSettingsTab();
+        else tabContent = renderAdminOrdersTab();
+
+        return `
+          <div class="min-h-screen bg-muted/40 pb-20 md:pb-0">
+            <header class="sticky top-0 z-20 border-b bg-card">
+              <div class="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3">
+                <a href="#/" onclick="event.preventDefault(); navigate('/')" class="font-semibold hover:text-primary" title="Back to storefront">Anannya Paakshala · Owner</a>
+                <nav class="ml-6 hidden gap-1 md:flex">
+                  ${tabs
+                    .map(
+                      (t) => `
+                    <a href="#${t.to}" onclick="event.preventDefault(); navigate('${t.to}')"
+                      class="rounded-md px-3 py-1.5 text-sm ${
+                        state.route === t.to
+                          ? "bg-primary/10 text-primary font-medium"
+                          : "text-muted-foreground hover:bg-muted"
+                      }">
+                      ${t.label}
+                    </a>`
+                    )
+                    .join("")}
+                </nav>
+                <div class="ml-auto flex items-center gap-2">
+                  <a href="#/" onclick="event.preventDefault(); navigate('/')" class="rounded-md px-2.5 py-1.5 text-xs text-muted-foreground hover:bg-muted">Storefront</a>
+                  <button type="button" onclick="ownerSignOut()" class="inline-flex h-8 items-center gap-1 rounded-md px-3 text-xs font-medium hover:bg-accent">
+                    Sign out
+                  </button>
+                </div>
+              </div>
+            </header>
+            <main class="mx-auto max-w-6xl p-4">${tabContent}</main>
+            <nav class="fixed inset-x-0 bottom-0 z-20 grid grid-cols-3 border-t bg-card md:hidden">
+              ${tabs
+                .map(
+                  (t) => `
+                <a href="#${t.to}" onclick="event.preventDefault(); navigate('${t.to}')"
+                  class="flex flex-col items-center py-2.5 text-xs ${
+                    state.route === t.to
+                      ? "text-primary font-medium"
+                      : "text-muted-foreground"
+                  }">
+                  ${t.label}
+                </a>`
+                )
+                .join("")}
+            </nav>
+          </div>
+        `;
+      }
+
+      // =========================================================================
+      // 10. MAIN RENDER ROUTER
+      // =========================================================================
+
+      function render() {
+        const root = document.getElementById("app");
+        if (!root) return;
+
+        const r = state.route;
+        if (r === "/cart") {
+          root.innerHTML = renderCartPage();
+        } else if (r.startsWith("/order/")) {
+          const orderId = r.slice("/order/".length);
+          root.innerHTML = renderOrderPage(orderId);
+        } else if (r === "/admin" || r.startsWith("/admin/")) {
+          root.innerHTML = renderAdminLayout();
+        } else {
+          root.innerHTML = renderHomePage();
+        }
+      }
+
+      // Initialize app on load
+      window.addEventListener("DOMContentLoaded", () => {
+        render();
+      });
+    </script>
+  </body>
+</html>
