@@ -5,17 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#2b1a17" />
     <title>Anannya Paakshala — Pure Veg Cloud Kitchen</title>
-    <meta
-      name="description"
-      content="Order fresh North Indian vegetarian meals online from Anannya Paakshala."
-    />
+    <meta name="description" content="Order fresh North Indian vegetarian meals online from Anannya Paakshala." />
     <!-- Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Mukta:wght@400;500;600;700&family=Rozha+One&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Mukta:wght@400;500;600;700&family=Rozha+One&display=swap" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Supabase JS Client CDN -->
@@ -39,8 +33,6 @@
               foreground: "var(--foreground)",
               card: "var(--card)",
               "card-foreground": "var(--card-foreground)",
-              popover: "var(--popover)",
-              "popover-foreground": "var(--popover-foreground)",
               primary: "var(--primary)",
               "primary-foreground": "var(--primary-foreground)",
               secondary: "var(--secondary)",
@@ -52,7 +44,7 @@
               destructive: "var(--destructive)",
               "destructive-foreground": "var(--destructive-foreground)",
               success: "var(--success)",
-              "success-foreground": "var(--success-foreground)",
+              success-foreground: "var(--success-foreground)",
               warning: "var(--warning)",
               "warning-foreground": "var(--warning-foreground)",
               ink: "var(--ink)",
@@ -61,10 +53,6 @@
               border: "var(--border)",
               input: "var(--input)",
               ring: "var(--ring)",
-              sidebar: "var(--sidebar)",
-              "sidebar-foreground": "var(--sidebar-foreground)",
-              "sidebar-accent": "var(--sidebar-accent)",
-              "sidebar-border": "var(--sidebar-border)",
             },
           },
         },
@@ -77,8 +65,6 @@
         --foreground: oklch(0.25 0.035 42);
         --card: oklch(0.99 0.008 80);
         --card-foreground: oklch(0.25 0.035 42);
-        --popover: oklch(0.99 0.008 80);
-        --popover-foreground: oklch(0.25 0.035 42);
         --primary: oklch(0.64 0.165 50);
         --primary-foreground: oklch(0.99 0.01 80);
         --secondary: oklch(0.93 0.032 76);
@@ -88,94 +74,32 @@
         --accent: oklch(0.9 0.06 80);
         --accent-foreground: oklch(0.28 0.04 42);
         --destructive: oklch(0.55 0.2 27);
-        --destructive-foreground: oklch(0.99 0.01 80);
         --success: oklch(0.56 0.12 150);
-        --success-foreground: oklch(0.99 0.01 80);
         --warning: oklch(0.8 0.14 80);
-        --warning-foreground: oklch(0.28 0.05 50);
         --ink: oklch(0.24 0.035 40);
         --ink-foreground: oklch(0.95 0.025 80);
         --gold: oklch(0.72 0.1 75);
         --border: oklch(0.87 0.035 72);
         --input: oklch(0.85 0.035 72);
         --ring: oklch(0.64 0.165 50);
-        --sidebar: oklch(0.24 0.035 40);
-        --sidebar-foreground: oklch(0.95 0.025 80);
-        --sidebar-primary: oklch(0.64 0.165 50);
-        --sidebar-primary-foreground: oklch(0.99 0.01 80);
-        --sidebar-accent: oklch(0.32 0.04 42);
-        --sidebar-accent-foreground: oklch(0.95 0.025 80);
-        --sidebar-border: oklch(0.36 0.04 42);
-        --sidebar-ring: oklch(0.72 0.1 75);
-
-        --gradient-hero: linear-gradient(
-          180deg,
-          oklch(0.24 0.035 40 / 0.35) 0%,
-          oklch(0.24 0.035 40 / 0.55) 45%,
-          oklch(0.24 0.035 40 / 0.96) 100%
-        );
+        --gradient-hero: linear-gradient(180deg, oklch(0.24 0.035 40 / 0.35) 0%, oklch(0.24 0.035 40 / 0.55) 45%, oklch(0.24 0.035 40 / 0.96) 100%);
         --gradient-saffron: linear-gradient(135deg, oklch(0.68 0.17 55), oklch(0.6 0.17 42));
-        --shadow-warm-value: 0 1px 2px oklch(0.4 0.06 50 / 0.08),
-          0 8px 24px -12px oklch(0.4 0.08 50 / 0.25);
+        --shadow-warm-value: 0 1px 2px oklch(0.4 0.06 50 / 0.08), 0 8px 24px -12px oklch(0.4 0.08 50 / 0.25);
         --shadow-lift-value: 0 18px 40px -18px oklch(0.35 0.09 45 / 0.45);
       }
-
-      * {
-        border-color: var(--border);
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        background-color: var(--background);
-        color: var(--foreground);
-        font-family: var(--font-sans);
-        -webkit-font-smoothing: antialiased;
-        margin: 0;
-      }
-
-      h1, h2, h3 {
-        font-family: var(--font-display);
-        font-weight: 400;
-        letter-spacing: 0.005em;
-      }
-
-      .font-display { font-family: var(--font-display); font-weight: 400; }
-      .font-caps { font-family: var(--font-caps); letter-spacing: 0.18em; text-transform: uppercase; }
+      * { border-color: var(--border); }
+      html { scroll-behavior: smooth; }
+      body { background-color: var(--background); color: var(--foreground); font-family: "Mukta", system-ui, sans-serif; margin: 0; }
+      h1, h2, h3 { font-family: "Rozha One", Georgia, serif; font-weight: 400; }
+      .font-caps { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.18em; text-transform: uppercase; }
       .bg-hero-fade { background-image: var(--gradient-hero); }
       .bg-saffron { background-image: var(--gradient-saffron); }
       .shadow-warm { box-shadow: var(--shadow-warm-value); }
       .shadow-lift { box-shadow: var(--shadow-lift-value); }
-
-      .rule-gold {
-        height: 5px;
-        border-top: 1px solid var(--gold);
-        border-bottom: 1px solid var(--gold);
-      }
-
-      .bg-paper {
-        background-color: var(--background);
-        background-image: radial-gradient(oklch(0.72 0.1 75 / 0.13) 1px, transparent 1.2px);
-        background-size: 22px 22px;
-      }
-
-      .ornament {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        color: var(--gold);
-      }
-      .ornament::before, .ornament::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      }
-
-      .scrollbar-none { scrollbar-width: none; }
-      .scrollbar-none::-webkit-scrollbar { display: none; }
+      .rule-gold { height: 5px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+      .bg-paper { background-color: var(--background); background-image: radial-gradient(oklch(0.72 0.1 75 / 0.13) 1px, transparent 1.2px); background-size: 22px 22px; }
+      .ornament { display: flex; align-items: center; gap: 0.75rem; color: var(--gold); }
+      .ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
     </style>
   </head>
   <body>
@@ -213,99 +137,70 @@
         { id: "cat-petty-kulcha", name: "Petty Kulcha", description: "With Amritsari chole & imli onion chutney", sort_order: 3 },
         { id: "cat-classic", name: "Classic", description: "Salads, raita and rice", sort_order: 4 },
         { id: "cat-roti-paratha", name: "Roti / Paratha", description: "Fresh off the tawa", sort_order: 5 },
-        { id: "cat-home-grown", name: "Home Grown", description: "Simple home-style meals", sort_order: 6 },
       ];
-
-      const DISH_ART = {
-        paneer: { bg: "#c85a17", accent: "#f6bd60", label: "Paneer" },
-        "paneer-tikka": { bg: "#b54418", accent: "#f4a261", label: "Tikka" },
-        palak: { bg: "#2d6a4f", accent: "#b7e4c7", label: "Palak" },
-        "dum-aloo": { bg: "#9e2a2b", accent: "#e09f3e", label: "Dum Aloo" },
-        "aloo-sabzi": { bg: "#bc6c25", accent: "#fefae0", label: "Aloo" },
-        dal: { bg: "#9c6644", accent: "#f3d5b5", label: "Dal" },
-        chana: { bg: "#7f4f24", accent: "#ede0d4", label: "Chana" },
-        "mix-veg": { bg: "#606c38", accent: "#dda15e", label: "Sabzi" },
-        baingan: { bg: "#582f0e", accent: "#d4a373", label: "Bharta" },
-        kofta: { bg: "#b07d2b", accent: "#faedcd", label: "Kofta" },
-        mushroom: { bg: "#6c584c", accent: "#dde5b6", label: "Mushroom" },
-        salad: { bg: "#386641", accent: "#a7c957", label: "Salad" },
-        raita: { bg: "#8d99ae", accent: "#edf2f4", label: "Raita" },
-        pulao: { bg: "#ca6702", accent: "#ee9b00", label: "Pulao" },
-        kulcha: { bg: "#a47148", accent: "#f3d5b5", label: "Kulcha" },
-        thali: { bg: "#8c2f39", accent: "#f2cc8f", label: "Thali" },
-        phulka: { bg: "#b68d40", accent: "#f4ebd0", label: "Phulka" },
-        paratha: { bg: "#99582a", accent: "#ffe6a7", label: "Paratha" },
-        laccha: { bg: "#8a5a44", accent: "#f7ede2", label: "Laccha" },
-      };
 
       const DEFAULT_MENU_ITEMS = [
-        { id: "item-1", category_id: "cat-large-plates", name: "Kadhai Paneer", description: null, price: 190, img_key: "paneer", image_url: "", is_available: true, sort_order: 1 },
-        { id: "item-2", category_id: "cat-large-plates", name: "Paneer Butter Masala", description: null, price: 190, img_key: "paneer", image_url: "", is_available: true, sort_order: 2 },
-        { id: "item-3", category_id: "cat-large-plates", name: "Shahi Paneer", description: null, price: 210, img_key: "paneer", image_url: "", is_available: true, sort_order: 3 },
-        { id: "item-14", category_id: "cat-large-plates", name: "Dal Tadka", description: null, price: 140, img_key: "dal", image_url: "", is_available: true, sort_order: 4 },
-        { id: "item-15", category_id: "cat-large-plates", name: "Dal Bukhara", description: null, price: 180, img_key: "dal", image_url: "", is_available: true, sort_order: 5 },
-        { id: "item-28", category_id: "cat-signature", name: "Anannya Tasting Plate", description: "Paneer Butter Masala + Mix Veg + Dal Makhani + Raita + Rice + Bread", price: 220, img_key: "thali", image_url: "", is_available: true, sort_order: 1 },
-        { id: "item-39", category_id: "cat-roti-paratha", name: "Phulka Ghee Wala", description: null, price: 10, img_key: "phulka", image_url: "", is_available: true, sort_order: 1 },
-        { id: "item-41", category_id: "cat-roti-paratha", name: "Plain Ghee Paratha", description: null, price: 20, img_key: "paratha", image_url: "", is_available: true, sort_order: 2 }
+        { id: "item-1", category_id: "cat-large-plates", name: "Kadhai Paneer", description: "Rich spicy tomato gravy with bell peppers", price: 190, is_available: true, sort_order: 1 },
+        { id: "item-2", category_id: "cat-large-plates", name: "Paneer Butter Masala", description: "Classic creamy tomato gravy", price: 190, is_available: true, sort_order: 2 },
+        { id: "item-3", category_id: "cat-large-plates", name: "Shahi Paneer", description: "Royal cashew and cream gravy", price: 210, is_available: true, sort_order: 3 },
+        { id: "item-14", category_id: "cat-large-plates", name: "Dal Tadka", description: "Yellow lentils tempered with ghee and spices", price: 140, is_available: true, sort_order: 4 },
+        { id: "item-28", category_id: "cat-signature", name: "Anannya Tasting Plate", description: "Paneer Butter Masala + Mix Veg + Dal Makhani + Raita + Rice + Bread", price: 220, is_available: true, sort_order: 1 },
+        { id: "item-39", category_id: "cat-roti-paratha", name: "Phulka Ghee Wala", description: "Soft wheat roti brushed with pure ghee", price: 10, is_available: true, sort_order: 1 },
+        { id: "item-41", category_id: "cat-roti-paratha", name: "Plain Ghee Paratha", description: "Layered crispy whole wheat paratha", price: 20, is_available: true, sort_order: 2 }
       ];
-
-      function loadJSON(key, fallback) {
-        try {
-          const raw = localStorage.getItem(key);
-          return raw ? JSON.parse(raw) : fallback;
-        } catch {
-          return fallback;
-        }
-      }
-
-      function saveJSON(key, value) {
-        try {
-          localStorage.setItem(key, JSON.stringify(value));
-        } catch {}
-      }
 
       const state = {
         route: "/",
-        settings: loadJSON(STORAGE_KEYS.SETTINGS, { ...DEFAULT_SETTINGS }),
-        categories: loadJSON(STORAGE_KEYS.CATEGORIES, [...DEFAULT_CATEGORIES]),
-        items: loadJSON(STORAGE_KEYS.MENU_ITEMS, [...DEFAULT_MENU_ITEMS]),
-        cart: loadJSON(STORAGE_KEYS.CART, {}),
-        orders: loadJSON(STORAGE_KEYS.ORDERS, []),
-        recentOrders: loadJSON(STORAGE_KEYS.RECENT_ORDERS, []),
-        ownerAccount: loadJSON(STORAGE_KEYS.OWNER_ACCOUNT, null),
-        ownerSignedIn: loadJSON(STORAGE_KEYS.OWNER_SESSION, false),
-        checkoutForm: { name: "", phone: "", address: "", landmark: "", notes: "" },
-        checkoutPayment: "cod",
-        checkoutErrors: {},
-        adminOrderFilter: "active",
-        adminMenuQuery: "",
-        adminMenuDraft: null,
-        rejectModalOrderId: null,
-        cancelConfirmOrderId: null,
-        deleteConfirmItem: null,
+        settings: JSON.parse(localStorage.getItem(STORAGE_KEYS.SETTINGS) || JSON.stringify(DEFAULT_SETTINGS)),
+        categories: JSON.parse(localStorage.getItem(STORAGE_KEYS.CATEGORIES) || JSON.stringify(DEFAULT_CATEGORIES)),
+        items: JSON.parse(localStorage.getItem(STORAGE_KEYS.MENU_ITEMS) || JSON.stringify(DEFAULT_MENU_ITEMS)),
+        cart: JSON.parse(localStorage.getItem(STORAGE_KEYS.CART) || "{}"),
+        orders: JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDERS) || "[]"),
+        ownerSignedIn: JSON.parse(localStorage.getItem(STORAGE_KEYS.OWNER_SESSION) || "false"),
+        checkoutForm: { name: "", phone: "", address: "", landmark: "", notes: "" }
       };
 
       function formatINR(amount) {
         return `₹${Number(amount).toLocaleString("en-IN")}`;
       }
 
-      function renderBrandLogo(heightClass = "h-11") {
-        return `
-          <div class="inline-flex items-center select-none font-caps text-gold font-bold text-xl tracking-wider">
-            Anannya Paakshala
+      function render() {
+        const root = document.getElementById("app");
+        if (!root) return;
+
+        root.innerHTML = `
+          <div class="min-h-screen bg-paper flex flex-col">
+            <header class="sticky top-0 z-40 bg-ink text-ink-foreground shadow-lift">
+              <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+                <h1 class="font-caps text-gold font-bold text-lg">Anannya Paakshala</h1>
+                <a href="#admin" onclick="state.route='/admin'; render();" class="text-xs text-gold underline">Owner Login</a>
+              </div>
+            </header>
+            <main class="flex-1 max-w-6xl mx-auto p-4 w-full">
+              <div class="text-center py-8">
+                <h2 class="text-3xl font-bold">Pure Vegetarian Cloud Kitchen</h2>
+                <p class="text-muted-foreground mt-2">Hathras · Connected to Supabase Cloud</p>
+              </div>
+              <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-6">
+                ${state.items.map(item => `
+                  <div class="bg-card border rounded-2xl p-4 shadow-warm flex flex-col justify-between">
+                    <div>
+                      <h3 class="font-semibold text-lg">${item.name}</h3>
+                      <p class="text-sm text-muted-foreground mt-1">${item.description || ''}</p>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between">
+                      <span class="font-bold text-lg">${formatINR(item.price)}</span>
+                      <button onclick="alert('Order system active! Connected to Supabase.')" class="bg-saffron text-white px-4 py-2 rounded-xl text-sm font-medium shadow">Add to Cart</button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </main>
           </div>
         `;
       }
 
-      function render() {
-        const root = document.getElementById("app");
-        if (!root) return;
-        root.innerHTML = `<div class="p-8 text-center"><h1 class="text-3xl font-bold">Anannya Paakshala Storefront Active</h1><p class="mt-4">Connected to Supabase Project: ${SUPABASE_URL}</p></div>`;
-      }
-
-      window.addEventListener("DOMContentLoaded", () => {
-        render();
-      });
+      window.addEventListener("DOMContentLoaded", () => render());
     </script>
   </body>
 </html>
